@@ -5,5 +5,6 @@ package jp.co.bss.kintai.common;
  *
  */
 public class CmConst {
+	// 固定値
 
 }
