@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>図書管理システム</title>
+</head>
+
+<body
+	style="background: url(images/background.jpg); background-size: cover;">
+	<div align="left">
+		<div>
+			<i><img src="images/logo.png" width="68px" height="68px"></i>
+		</div>
+	</div>
+
+	<h1 align="center">勤務管理システム</h1>
+	<br>
+	<hr>
+	<div align="center">
+		<form action="login" method="post" name="form">
+			<table>
+				<tr>
+					<td>ユーザ名：</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="accountId" value="" placeholder="Emailアドレスを入力してください" onkeydown="eraseInfo();" /></td>
+				</tr>
+
+				<tr>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td>パスワード：</td>
+				</tr>
+				<tr>
+					<td><input type="password" name="password" value="" /></td>
+				</tr>
+			</table>
+			<input type="submit" value="ログイン">
+		</form>	
+	</div>
+</body>
+</html>

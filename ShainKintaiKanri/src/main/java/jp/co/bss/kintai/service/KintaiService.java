@@ -3,10 +3,14 @@
  */
 package jp.co.bss.kintai.service;
 
+import jp.co.bss.kintai.bean.UserBean;
 /**
  * @author miaoc
  *
  */
-public class KintaiService {
+
+public interface KintaiService {
+
+    UserBean loginIn(String name,String password);
 
 }
