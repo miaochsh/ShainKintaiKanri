@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link th:href="@{/css/KinTai.css}" rel="stylesheet">
+</head>
+<body>
+	<div>
+		<p>勤怠情報詳細
+	<table  border="1">
+		<tr th:each="kintai:${kintailist}" th:object="${kintai}" align="left">
+			<th>名前</th>
+<!--			<td width="80%" th:text="*{name}"></td>-->
+			<input type="text" class="form-control" th:field="*{name}">
+		</tr>
+		<tr th:each="kintai:${kintailist}" th:object="${kintai}" align="left">
+			<th>常駐先</th>
+			<td th:text="*{jochu_saki}"></td>
+		</tr>
+		<tr th:each="kintai:${kintailist}" th:object="${kintai}" align="left">
+			<th>勤怠年</th>
+			<td th:text="*{kintai_y}"></td>
+		</tr>
+		<tr th:each="kintai:${kintailist}" th:object="${kintai}" align="left">
+			<th>勤怠月</th>
+			<td th:text="*{kintai_m}"></td>
+		</tr>
+		<tr th:each="kintai:${kintailist}" th:object="${kintai}" align="left">
+			<th>勤務時間</th>
+			<td th:text="*{kinmu_data}"></td>
+		</tr>
+		<tr th:each="kintai:${kintailist}" th:object="${kintai}" align="left">
+			<th>交通費</th>
+			<td th:text="*{kotsu_data}"></td>
+		</tr>
+		<tr align="left">
+			<th>勤務表ファイル</th>
+			<td>www</td>
+		</tr>
+		<tr align="left">
+			<th>交通費ファイル</th>
+			<td>www</td>
+		</tr>
+	</table>
+
+</body>
+</html>
