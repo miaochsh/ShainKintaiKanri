@@ -11,6 +11,6 @@ import jp.co.bss.kintai.bean.UserBean;
 
 public interface KintaiService {
 
-    UserBean loginIn(String name,String password);
+    UserBean loginIn(String accountId,String password);
 
 }

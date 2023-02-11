@@ -9,5 +9,5 @@ import jp.co.bss.kintai.bean.UserBean;
  *
  */
 public interface KintaiMapper {
-    UserBean getInfo(String name,String password);
+    UserBean getInfo(String accountId,String password);
 }

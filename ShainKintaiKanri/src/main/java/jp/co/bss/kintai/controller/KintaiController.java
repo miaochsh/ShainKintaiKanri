@@ -26,8 +26,8 @@ public class KintaiController {
     }
 
     @RequestMapping(value = "/loginIn",method = RequestMethod.POST)
-    public String login(String name,String password){
-        UserBean userBean = userService.loginIn(name,password);
+    public String login(String accountId,String password){
+        UserBean userBean = userService.loginIn(accountId,password);
         if(userBean!=null){
             return "success";
         }else {

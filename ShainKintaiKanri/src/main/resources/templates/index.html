@@ -17,13 +17,13 @@
 	<br>
 	<hr>
 	<div align="center">
-		<form action="login" method="post" name="form">
+		<form role="form" action="/loginIn" method="post" name="form">
 			<table>
 				<tr>
 					<td>ユーザ名：</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="accountId" value="" placeholder="Emailアドレスを入力してください" onkeydown="eraseInfo();" /></td>
+					<td><input type="text" id="accountId" name="accountId" value="" placeholder="Emailアドレスを入力してください" onkeydown="eraseInfo();" /></td>
 				</tr>
 
 				<tr>
@@ -34,10 +34,10 @@
 					<td>パスワード：</td>
 				</tr>
 				<tr>
-					<td><input type="password" name="password" value="" /></td>
+					<td><input type="password" id="password" name="password" value="" /></td>
 				</tr>
 			</table>
-			<input type="submit" value="ログイン">
+			<input type="submit" id = "login" value="ログイン">
 		</form>	
 	</div>
 </body>
