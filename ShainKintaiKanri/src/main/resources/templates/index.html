@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>マイ勤怠一覧</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/kintai">マイ勤怠一覧</a> 
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+  			<div class="card-header">
+  				<h5 class="card-title">
+  				マイ勤怠一覧
+  				<a href="/kintai/newkintai" class="btn btn-success float-right" style="margin-left:100px">新規</a>
+  				<a href="#" class="btn btn-success float-right" style="margin-left:20px">勤务表</a>
+  				<a href="#" class="btn btn-success float-right">交通费表</a>
+  				</h5>
+  			</div>
+  			<div class="card-body" th:if="!${kintai.size()}">
+     			<p>勤怠情報がありません。</p>
+   			</div>
+   			<table class="table table-striped" th:if="${kintai.size()}">
+     			<thead>
+       				<tr>
+         				<th style="width: 5%">ID</th>
+         				<th style="width: 5%">名前</th>
+         				<th style="width: 10%">常駐先</th>
+         				<th style="width: 5%">勤怠年</th>
+         				<th style="width: 5%">勤怠月</th>
+         				<th style="width: 10%">勤務時間</th>
+         				<th style="width: 10%">交通費</th>
+         				<th style="width: 10%">勤務表ファイル</th>
+         				<th style="width: 10%">交通費ファイル</th>
+         				<th style="width: 10%">更新日時</th>
+         				<th style="width: 10%">作成日時</th>
+         				<th style="width: 10%"></th>				
+       				</tr>
+     			</thead>
+     			<hr>
+     			<tbody>
+       				<tr th:each="kintai:${kintai}" th:object="${kintai}">
+         				<td th:text="*{id}"></td>
+         				<td th:text="*{name}"></td>
+         				<td th:text="*{jochu_saki}"></td>
+         				<td th:text="*{kintai_y}"></td>
+         				<td th:text="*{kintai_m}"></td>
+         				<td th:text="*{kinmu_data}"></td>
+         				<td th:text="*{kotsu_data}"></td>
+         				<td th:text="*{kinmu_file_data}">
+         				  <form th:action="@{/kintai/{id}(id=*{id})}" th:method="delete">
+         				    	<button class="btn btn-primary" th:value="*{kinmu_file_data}">下载勤务表</button>
+         				  </form>
+         				 </td>
+         				<td th:text="*{kotsu_file_data}"></td>
+         				<td th:text="*{update_date}"></td>
+         				<td th:text="*{create_date}"></td>
+         				<td class="float-right">
+         				<form th:action="@{/kintai/{id}(id=*{id})}" th:method="delete">
+	         					<a class="btn btn-primary" th:href="@{/kintai/{id}(id=*{id})}">詳細</a>
+	         					<a class="btn btn-primary" th:href="@{/kintai/{id}/edit(id=*{id})}">変更</a>
+								<button class="btn btn-primary">削除</button>
+							</form>
+	         				
+         				</td>
+       				</tr>
+     			</tbody>
+   			</table>
+  		</div>
+	</div>
+	<script src="/js/jquery-3.4.1.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

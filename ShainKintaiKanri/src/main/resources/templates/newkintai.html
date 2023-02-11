@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>新規勤怠登録</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/kintai">勤怠管理システム</a>
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+	  			<div class="card-header">
+	  				<h5 class="card-title">新規勤怠登録<a href="/kintai" class="btn btn-success float-right">マイ勤怠一覧</a></h5>
+	  			</div>
+				<div class="card-body">
+	      			<form th:method="post" th:action="@{/kintai}" th:object="${kintai}">
+	      			    
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">お名前</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="name" th:value="*{name}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+	          				</div>
+	        			</div>
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">常駐先</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="jochu_saki" th:value="*{jochu_saki}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('jochu_saki')}" th:errors="*{jochu_saki}"></div>
+	          				</div>
+	        			</div>
+	        		
+	        			<div class="form-group row">
+	          				<label class="col-md-2 control-label">勤怠年</label>
+	          				<div class="col-md-10">
+	            				<input class="form-control" type="text" name="kintai_y" th:value="*{kintai_y}" />
+	            				<div class="text-danger" th:if="${#fields.hasErrors('kintai_y')}" th:errors="*{kintai_y}"></div>
+	          				</div>
+	        			</div>
+						<div class="form-group row">
+							<label class="col-md-2 control-label">勤怠月</label>
+							<div class="col-md-10">
+							  <input class="form-control" type="text" name="kintai_m" th:value="*{kintai_m}" />
+							  <div class="text-danger" th:if="${#fields.hasErrors('kintai_m')}" th:errors="*{kintai_m}"></div>
+							</div>
+					  </div>
+					  <div class="form-group row">
+						<label class="col-md-2 control-label">勤務時間</label>
+						<div class="col-md-10">
+						  <input class="form-control" type="text" name="kinmu_data" th:value="*{kinmu_data}" />
+						  <div class="text-danger" th:if="${#fields.hasErrors('kinmu_data')}" th:errors="*{kinmu_data}"></div>
+						</div>
+				 	 </div>
+					  <div class="form-group row">
+					<label class="col-md-2 control-label">交通費</label>
+					<div class="col-md-10">
+					  <input class="form-control" type="text" name="kotsu_data" th:value="*{kotsu_data}" />
+					  <div class="text-danger" th:if="${#fields.hasErrors('kotsu_data')}" th:errors="*{kotsu_data}"></div>
+					</div>
+			  		</div>
+			  <div class="form-group row">
+				<label class="col-md-2 control-label">勤務表ファイル</label>
+				<div class="col-md-10">
+				  <input class="form-control" type="file" name="kinmu_file_data" th:value="*{kinmu_file_data}" />
+				  <div class="text-danger" th:if="${#fields.hasErrors('kinmu_file_data')}" th:errors="*{kinmu_file_data}"></div>
+				</div>
+		  </div>
+		  <div class="form-group row">
+			<label class="col-md-2 control-label">交通費ファイル</label>
+			<div class="col-md-10">
+			  <input class="form-control" type="file" name="kotsu_file_data" th:value="*{kotsu_file_data}" />
+			  <div class="text-danger" th:if="${#fields.hasErrors('kotsu_file_data')}" th:errors="*{kotsu_file_data}"></div>
+			</div>
+			</div>
+			
+	        			<div class="form-group row">
+	          				<div class="offset-md-2 col-md-10">
+	            				<button class="btn btn-primary" id="submit-btn" >登録</button>
+	          				</div>
+	        			</div>
+	        			
+	        			
+	      		</form>
+	      		<div class="form-group row">
+	          				<div class="offset-md-2 col-md-10">
+	            				<!-- <button class="btn btn-primary">新規</button> -->
+								<button class="btn btn-primary" onclick = "confirmTips()">新規</button>
+	          				</div>
+	        	</div>
+	    	</div>
+	  	</div>
+	  </div>
+	  
+	    <script>
+		var submitBtn = document.getElementById("submit-btn");
+		submitBtn.style.display = "none";
+
+		 function confirmTips() {
+			var a = confirm("すべての項目はご記入必要です。ご記入内容に問題がなければ、「ok」を押して登録します（未入力の項目があれば、新規登録は行いません）。ご記入内容をもう一度ご確認の場合、「キャンセル」を押してください。");
+			if (a) {
+				submitBtn.click();
+			}else{
+				alert("新規作成を行っておりません。登録内容を再度ご確認ください。");
+			}
+
+			
+		}
+
+	  </script>
+	<!--
+	<script src="/js/jquery-3.4.1.min"></script>
+	  -->
+	<script src="/js/jquery-3.6.3.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
