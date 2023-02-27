@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<title>勤怠詳細</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/kintai">勤怠管理システム</a>
+			</div>
+		</div>
+    </nav>
+	<div class="container">
+		<div class="card card-primary mb-3">
+  			<div class="card-header">
+  				<h5 class="card-title">商品詳細<a href="/kintai" class="btn btn-success float-right">マイ勤怠一覧</a></h5>
+  			</div>
+			<div class="card-body">
+		        <div th:object="${kintai}">
+		        <div class="form-group row">
+		        		<label class="col-md-2">ID</label>
+						<div class="col-md-10" th:text="*{id}"></div>
+		          	</div>
+		        	<div class="form-group row">
+		        		<label class="col-md-2">お名前</label>
+						<div class="col-md-10" th:text="*{name}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">常駐先</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{jochu_saki}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">勤怠年</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{kintai_y}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">勤怠月</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{kintai_m}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">勤務時間</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{kinmu_data}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">交通費</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{kotsu_data}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">勤務表ファイル</label>
+		            	<div class="col-md-10 form-control-static" >
+		            	  <a href="#"th:text="*{kinmu_file_data}"></a>
+		            	</div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">交通費ファイル</label>
+		            	<div class="col-md-10 form-control-static" >
+		            	 <a href="#"th:text="*{kotsu_file_data}"></a>
+		            	</div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">更新日時</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{update_date}"></div>
+		          	</div>
+		          	<div class="form-group row">
+		            	<label class="col-md-2 control-label">作成日時</label>
+		            	<div class="col-md-10 form-control-static" th:text="*{create_date}"></div>
+		          	</div>
+				</div>
+			</div>
+		</div>
+		<form th:method="delete" th:action="@{/kintai/delete/{id}(id=*{id})}" >
+	         					<a class="btn btn-primary" th:href="@{/kintai/{id}/edit(id=*{id})}">変更</a>
+								<button class="btn btn-primary">削除</button>
+		</form>
+    </div>
+	<!--
+	<script src="/js/jquery-3.4.1.min"></script>
+	  -->
+	<script src="/js/jquery-3.6.3.min"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

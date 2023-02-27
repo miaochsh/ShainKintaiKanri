@@ -13,4 +13,14 @@
 		insert into bss_shain_manage_db.shain_info(name, jochu_saki, kintai_y, kintai_m, kinmu_data, kotsu_data, kinmu_file_data, kotsu_file_data) 
 		values(#{name}, #{jochu_saki}, #{kintai_y}, #{kintai_m}, #{kinmu_data}, #{kotsu_data}, #{kinmu_file_data}, #{kotsu_file_data})
 	</insert>
+	
+	<update id="update">
+		update bss_shain_manage_db.shain_info set name=#{name}, jochu_saki=#{jochu_saki}, kintai_y=#{kintai_y}, kintai_m=#{kintai_m}, 
+		kinmu_data=#{kinmu_data}, kotsu_data=#{kotsu_data}, kinmu_file_data=#{kinmu_file_data}, kotsu_file_data=#{kotsu_file_data}
+		 where id= #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from bss_shain_manage_db.shain_info where id = #{id}
+	</delete>
 </mapper>

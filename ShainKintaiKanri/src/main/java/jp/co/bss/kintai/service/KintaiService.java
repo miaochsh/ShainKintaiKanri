@@ -36,5 +36,14 @@ public class KintaiService {
 		kintaiMapper.save(kintai);
 	}
 	
+	@Transactional
+	public void update(Kintai kintai) {
+		kintaiMapper.update(kintai);
+	}
+
+	@Transactional
+	public void delete(Long id) {
+		kintaiMapper.delete(id);
+	}
 
 }

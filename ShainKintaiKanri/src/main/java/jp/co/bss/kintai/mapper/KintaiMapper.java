@@ -18,9 +18,17 @@ import jp.co.bss.kintai.dao.Kintai;
 public interface KintaiMapper {
 	List<Kintai> findAll();
 	  
+	//查询单个
 	Kintai findOne(Long id);
+	
 	  //新增
-	  void save (Kintai kintai);
+	void save (Kintai kintai);
+	
+	  //修改已有信息
+	void update (Kintai kintai);
+	  
+	//删除
+	void delete (Long id);
 	  
 
 }

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/css/bootstrap.min.css" />
-	<title>新規勤怠登録</title>
+	<title>勤怠更新</title>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -17,10 +17,10 @@
 	<div class="container">
 		<div class="card card-primary mb-3">
 	  			<div class="card-header">
-	  				<h5 class="card-title">新規勤怠登録<a href="/kintai" class="btn btn-success float-right">マイ勤怠一覧</a></h5>
+	  				<h5 class="card-title">勤怠更新</h5>
 	  			</div>
 				<div class="card-body">
-	      			<form th:method="post" th:action="@{/kintai}" th:object="${kintai}">
+	      			<form th:method="post" th:action="@{/kintai/{id}(id=*{id})}" th:object="${kintai}">
 	      			    
 	        			<div class="form-group row">
 	          				<label class="col-md-2 control-label">お名前</label>
@@ -82,7 +82,7 @@
 			
 	        			<div class="form-group row">
 	          				<div class="offset-md-2 col-md-10">
-	            				<button class="btn btn-primary" id="submit-btn" >登録</button>
+	            				<button class="btn btn-primary" id="submit-btn" >更新</button>
 	          				</div>
 	        			</div>
 	        			
@@ -90,8 +90,8 @@
 	      		</form>
 	      		<div class="form-group row">
 	          				<div class="offset-md-2 col-md-10">
-	            				<!-- <button class="btn btn-primary">新規</button> -->
-								<button class="btn btn-primary" onclick = "confirmTips()">新規</button>
+	            				<!-- <button class="btn btn-primary">更新</button> -->
+								<button class="btn btn-primary" onclick = "confirmTips()">更新</button>
 	          				</div>
 	        	</div>
 	    	</div>
@@ -103,11 +103,11 @@
 		submitBtn.style.display = "none";
 
 		 function confirmTips() {
-			var a = confirm("すべての項目はご記入必要です。ご記入内容に問題がなければ、「ok」を押して登録します（未入力の項目があれば、新規登録は行いません）。ご記入内容をもう一度ご確認の場合、「キャンセル」を押してください。");
+			var a = confirm("すべての項目はご記入必要です。ご記入内容に問題がなければ、「ok」を押して更新します（未入力の項目があれば、更新できません）。ご記入内容をもう一度ご確認の場合、「キャンセル」を押してください。");
 			if (a) {
 				submitBtn.click();
 			}else{
-				alert("新規作成を行っておりません。登録内容を再度ご確認ください。");
+				alert("更新は行っておりません。ご記入内容を再度ご確認ください。");
 			}
 
 			

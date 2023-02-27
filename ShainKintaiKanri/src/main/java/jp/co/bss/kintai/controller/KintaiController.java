@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -46,6 +47,36 @@ public class KintaiController {
 	  }
      }
 	 
+	 
+	 @GetMapping("{id}")
+	 public String show(@PathVariable Long id, Model model) {
+	  model.addAttribute("kintai", kintaiService.findOne(id));
+	  return "showkintai";
+	 }
+	 
+	 @GetMapping("{id}/edit")
+	 public String edit(@PathVariable Long id, @ModelAttribute("kintai") Kintai kintai, Model model) {
+	  model.addAttribute("kintai", kintaiService.findOne(id));
+	  return "editkintai";
+	 }
+	 
+	 @PostMapping("{id}")
+	 public String update(@PathVariable Long id, @ModelAttribute("kintai") @Validated Kintai kintai, BindingResult result, Model model) {
+	  if (result.hasErrors()) {
+	   model.addAttribute("kintai", kintai);
+	   return "editkintai";
+	  } else {
+	   kintai.setId(id);
+	   kintaiService.update(kintai);
+	   return "redirect:/kintai";
+	  }
+	 }
+	 
+	 @RequestMapping(value="/delete/{id}")
+	 public String delete(@PathVariable("id") Long id) {
+	  kintaiService.delete(id);
+	  return "redirect:/kintai"; 
+	 }
 	 
 	
 }
