@@ -3,7 +3,6 @@
  */
 package jp.co.bss.kintai.mapper;
 
-import jp.co.bss.kintai.bean.UserBean;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -17,8 +16,6 @@ import jp.co.bss.kintai.dao.Kintai;
 
 @Mapper
 public interface KintaiMapper {
-	UserBean getInfo(String accountId,String password);
-	
 	List<Kintai> findAll();
 	  
 	//查询单个

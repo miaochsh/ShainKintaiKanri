@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.bss.kintai.bean.UserBean;
 import jp.co.bss.kintai.dao.Kintai;
 import jp.co.bss.kintai.service.KintaiService;
-import jp.co.bss.kintai.service.UserService;
 
 /**
  * @author miaoc
@@ -27,32 +24,10 @@ public class KintaiController {
 	@Autowired
 	private KintaiService kintaiService;
 	
-	//将Service注入Web层
-	@Autowired
-	private UserService userService;
-	  
-	@RequestMapping
-    public String show(){
-        return "index";
-    }
-
-    @RequestMapping(value = "/kintailist", method = RequestMethod.POST)
-    public String login(String accountId,String password){
-        UserBean userBean = userService.loginIn(accountId,password);
-        if(userBean!=null){
-        	System.out.println("login------------");
-            return "redirect:/kintai/kintailist";
-            
-        }else {
-        	System.out.println("error------------");
-            return "error";
-        }
-    }
-	
-	@GetMapping("kintailist")
+	@GetMapping
 	public String index(Model model) {
 		model.addAttribute("kintai", kintaiService.findAll());
-		System.out.println("kintai findall------------");
+//		System.out.println("kintai findall------------");
 		return "kintailist";
 	   }
 	 
@@ -68,7 +43,7 @@ public class KintaiController {
 	   return "newkintai";
 	  } else {
 	   kintaiService.save(kintai);
-	   return "redirect:/kintai/kintailist";
+	   return "redirect:/kintai";
 	  }
      }
 	 
@@ -93,14 +68,14 @@ public class KintaiController {
 	  } else {
 	   kintai.setId(id);
 	   kintaiService.update(kintai);
-	   return "redirect:/kintai/kintailist";
+	   return "redirect:/kintai";
 	  }
 	 }
 	 
 	 @RequestMapping(value="/delete/{id}")
 	 public String delete(@PathVariable("id") Long id) {
 	  kintaiService.delete(id);
-	  return "redirect:/kintai/kintailist"; 
+	  return "redirect:/kintai"; 
 	 }
 	 
 	
