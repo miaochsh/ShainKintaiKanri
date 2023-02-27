@@ -10,14 +10,14 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="/kintai">勤怠管理システム</a>
+				<a class="navbar-brand" href="/kintai/kintailist">勤怠管理システム</a>
 			</div>
 		</div>
     </nav>
 	<div class="container">
 		<div class="card card-primary mb-3">
 	  			<div class="card-header">
-	  				<h5 class="card-title">新規勤怠登録<a href="/kintai" class="btn btn-success float-right">マイ勤怠一覧</a></h5>
+	  				<h5 class="card-title">新規勤怠登録<a href="/kintai/kintailist" class="btn btn-success float-right">マイ勤怠一覧</a></h5>
 	  			</div>
 				<div class="card-body">
 	      			<form th:method="post" th:action="@{/kintai}" th:object="${kintai}">

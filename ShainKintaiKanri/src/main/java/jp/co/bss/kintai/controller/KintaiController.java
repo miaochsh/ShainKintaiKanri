@@ -28,7 +28,7 @@ public class KintaiController {
 	public String index(Model model) {
 		model.addAttribute("kintai", kintaiService.findAll());
 //		System.out.println("kintai findall------------");
-		return "index";
+		return "kintailist";
 	   }
 	 
 	 @GetMapping("newkintai")
