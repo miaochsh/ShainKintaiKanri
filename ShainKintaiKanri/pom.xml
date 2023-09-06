@@ -56,6 +56,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+   			<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+   			<version>42.2.22</version> <!-- 使用你需要的版本 -->
+		</dependency>
+		
 	</dependencies>
 
 	<build>
