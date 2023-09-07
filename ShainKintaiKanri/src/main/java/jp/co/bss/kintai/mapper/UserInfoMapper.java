@@ -13,6 +13,6 @@ import jp.co.bss.kintai.dao.UserInfo;
  */
 @Mapper
 public interface UserInfoMapper {
-	UserInfo getUserInfoByAccountId(String accountId);
+	UserInfo getUserInfoByName(String name);
 
 }

@@ -14,8 +14,8 @@ public class LoginService {
     @Autowired
     private UserInfoMapper userInfoMapper;
 
-    public boolean validateUser(String accountId, String password) {
-        UserInfo userInfo = userInfoMapper.getUserInfoByAccountId(accountId);
+    public boolean validateUser(String name, String password) {
+        UserInfo userInfo = userInfoMapper.getUserInfoByName(name);
         if (userInfo != null && userInfo.getPassword().equals(password)) {
             return true; // 验证成功
         }

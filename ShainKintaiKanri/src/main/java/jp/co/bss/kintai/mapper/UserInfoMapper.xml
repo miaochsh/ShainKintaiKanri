@@ -5,10 +5,8 @@
 <mapper namespace="jp.co.bss.kintai.mapper.UserInfoMapper">
     
     <!-- 根据 accountId 查询用户信息 -->
-    <select id="getUserInfoByAccountId" parameterType="java.lang.String" resultType="jp.co.bss.kintai.dao.UserInfo">
-        SELECT accountId, password
-        FROM userinfo
-        WHERE accountId = #{accountId}
+    <select id="getUserInfoByName" parameterType="java.lang.String" resultType="jp.co.bss.kintai.dao.UserInfo">
+        SELECT * FROM public.user WHERE name = #{name}
     </select>
     
 </mapper>

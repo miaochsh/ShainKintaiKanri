@@ -16,10 +16,10 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(HttpServletRequest request) {
-        String accountId = request.getParameter("accountId");
+        String name = request.getParameter("name");
         String password = request.getParameter("password");
 
-        if (loginService.validateUser(accountId, password)) {
+        if (loginService.validateUser(name, password)) {
             // 验证成功，返回成功页面或进行其他操作
             return "home";
         } else {
