@@ -67,7 +67,7 @@ public class FaqController {
             	faq.setQuestion3(question3);
             	faq.setAnswer3(answer3);
             	
-            	faq.setCreate_date(currentDate);
+            	faq.setUpdate_date(currentDate);
             	
             	faqService.updateFAQ(faq);
             	
@@ -86,7 +86,7 @@ public class FaqController {
             	faq.setQuestion3("");
             	faq.setAnswer3("");
             	
-            	faq.setCreate_date(currentDate);
+            	faq.setDelete_date(currentDate);
             	
             	faqService.updateFAQ(faq);
             	
