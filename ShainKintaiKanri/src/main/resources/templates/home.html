@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画面检索</title>
+    <style>
+        /* 样式可以根据需求进行自定义 */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+		.logo {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+			line-height: 18px;
+        }
+        table, th, td {
+            border: 2px solid #151414;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+		th:nth-child(2),td:nth-child(2){
+			width: 70px;
+		}
+        a {
+            text-decoration: none;
+            color: rgb(17, 17, 18);
+			font-size: small;
+        }
+        .search-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .search-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .clear-button {
+            background-color: #ccc;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+			float: right;
+        }
+        .results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+			margin-top: 20px; 
+			height: 100px;
+			overflow-y: auto;
+        }
+        .radio-buttons {
+            margin-bottom: 20px;
+        }
+		.span-search {
+			width: 100px;
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+		<div class="logo">
+            <img src="./images/bss.png" alt="公司图标">
+        </div>
+        <table>
+            <tr>
+                <td>会社規定</td>
+                <td><a href="">もっと見る</a></td>
+            </tr>
+            <tr>
+                <td>会社待遇説明<br>就業規則</td> 
+            </tr>
+            <tr>
+                <td>新人研修資料</td>
+                <td><a href="">もっと見る</a></td>
+            </tr>
+            <tr>
+                <td>エンジニア用語集<br>マナー</td> 
+            </tr>
+        </table>
+
+       
+    <div class="button-container" style="margin-top: 20px; text-align: center;">
+    <button style="margin: 5px; padding: 10px;"><a href="/sharedFiles">共有ファイル</a></button>
+    <button style="margin: 5px; padding: 10px;"><a href="various_applications.html">各種申請</a></button>
+    <button style="margin: 5px; padding: 10px;"><a href="schedule.html">予定表</a></button>
+    <button style="margin: 5px; padding: 10px;"><a href="notifications.html">お知らせ登録</a></button>
+    <button style="margin: 5px; padding: 10px;"><a href="/faq">社内FAQ</a></button>
+</div>
+       
+
+        
+    </div>
+
+ 
+</body>
+</html>
