@@ -31,13 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/bin/
-
-### MVN ###
-.mvn
-
-### metadata ###
-.metadata
-
-### Servers ###
-Servers
