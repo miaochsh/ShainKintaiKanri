@@ -71,57 +71,28 @@
             </div>
             <div id="insertSuccessMessage" class="red-text small-font" style="display: none;"> 登録成功！</div>
             <div id="updateSuccessMessage" class="red-text small-font" style="display: none;"> 更新成功！</div>
-            <div id="deleteSuccessMessage" class="red-text small-font" style="display: none;"> 削除成功！</div>
-            <table th:each="faq : ${faqs}">
-                <tr>
-                    <td>質問</td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea rows="4" cols="75" class="tall-row" id="question1" name="question1" th:text="${faq.question1}"></textarea>
-                    </td> 
-                </tr>
-                <tr>
-                    <td>回答</td> 
-                </tr>
-                <tr>
-                    <td>
-                        <textarea rows="4" cols="75" class="tall-row" id="answer1" name="answer1" th:text="${faq.answer1}"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>質問</td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea rows="4" cols="75" class="tall-row" id="question2" name="question2" th:text="${faq.question2}"></textarea>
-                    </td>  
-                </tr>
-                <tr>
-                    <td>回答</td> 
-                </tr>
-                <tr>
-                    <td>
-                        <textarea rows="4" cols="75" class="tall-row" id="answer2" name="answer2" th:text="${faq.answer2}"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>質問</td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea rows="4" cols="75" class="tall-row" id="question3" name="question3" th:text="${faq.question3}"></textarea>
-                    </td>  
-                </tr>
-                <tr>
-                    <td>回答</td> 
-                </tr>
-                <tr>
-                    <td>
-                        <textarea rows="4" cols="75" class="tall-row" id="answer3" name="answer3" th:text="${faq.answer3}"></textarea>
-                    </td>
-                </tr>
+            <div id="deleteSuccessMessage" class="red-text small-font" style="display: none;"> 削除成功！</div>          
+            <table>
+            <tbody th:each="faq : ${faqs}">
+            <tr>
+                <td>質問</td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea rows="4" cols="75" class="tall-row" id="question1" name="question1" th:text="${faq.question1}"></textarea>
+                </td> 
+            </tr>
+            <tr>
+                <td>回答</td> 
+            </tr>
+            <tr>
+                <td>
+                    <textarea rows="4" cols="75" class="tall-row" id="answer1" name="answer1" th:text="${faq.answer1}"></textarea>
+                </td>
+            </tr>
+            </tbody>
             </table>
+            
             
             <div class="button-container">
                 <button><a href="/faqLogin">登録</a></button>
