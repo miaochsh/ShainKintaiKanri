@@ -14,8 +14,7 @@ import jp.co.bss.kintai.dao.UserInfo;
  */
 @Mapper
 public interface UserInfoMapper {
-	
-	@Select("SELECT * FROM public.user WHERE name = #{name}")
+  @Select("SELECT * FROM public.user WHERE name = #{name}")
 	UserInfo getUserInfoByName(String name);
 
 }
