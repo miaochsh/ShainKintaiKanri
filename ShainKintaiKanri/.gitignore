@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### settings ###
+.settings
+
+### bin ###
+bin
