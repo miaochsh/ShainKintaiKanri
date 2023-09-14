@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>社内FAQ登録</title>
+    <title>お知らせ登録</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,12 +26,15 @@
             width: 80%;
             border-collapse: collapse;
             margin-bottom: 20px;
-			line-height: 18px;            
+			line-height: 18px;   
+            width: 80%;    
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
         }
         table, th, td {
             border: 1px solid #000; 
             text-align: left;
             height: 22px;
+            
         }
         td {
             padding: 0;
@@ -60,14 +63,28 @@
         }     
         .button-container {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2px;
         }
+        .button-container label {
+            text-align: left; 
+            margin-right: 10px;
+        }
+        .button-container input[type="Date"] {
+            text-align: left; 
+            margin-right: 10px;
+            flex: 1; 
+        }       
+        .button-container button {
+            margin-left: auto; 
+        }
         .tall-row{
-			height: 50px;
+			height: 60px;
 		}
         .table-width{
             width: 100%;
+            font-size: small;
         }   
         label {
             font-size: 13px;
@@ -75,6 +92,9 @@
         #filePath {
             width: 80%; 
         } 
+        .input-width{
+            width: 98%;
+        }   
     </style>
 </head>
 <body>
@@ -84,46 +104,54 @@
         </div>
         <table>
             <tr>
-                <th colspan="3">社内FAQ</th>
+                <th colspan="3">お知らせ一覧</th>
             </tr>
             <tbody id="faqTableBody">
             <tr th:each="faq : ${faqs}">
             <td><input type="text" id="inputText" class="input-text" th:value="${faq.question1}" readonly></td>
             <td class="button-cell"><button id="displayButton" onclick="displayData('${faq.question1}')">表示</button></td>
-            <td class="button-cell"><button id="copyButton" onclick="copyData('${faq.questio1n}')">複製</button></td>
+            <td class="button-cell"><button id="copyButton" onclick="copyData('${faq.questio1n}')">返信</button></td>
             </tr>
             </tbody>
         </table>
 
         <div class="black-border" style="padding: 10px;">
             <form method="post" action="/insert">
-                <div>   
-                    <div class="button-container">
+                <div> 
+                    <div class="button-container">                       
+                    <label for="startDate">掲載期間</label>
+                    <input type="date" id="startDate" name="startDate">
+                    <label for="endDate">~</label>
+                    <input type="date" id="endDate" name="endDate">
+
                     <button type="submit" name="buttonNm" value="insert">登録</button>
                     <button type="submit" name="buttonNm" value="update">更新</button>
                     <button type="submit" name="buttonNm" value="delete">削除</button>
                     </div>            
                 </div>
+                <div>
+                    <label for="startDate">重要度</label>
+                    <label>
+                        <input type="radio" name="type" value="option1"> 通常
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="option2"> 重要
+                    </label>
+                </div>
                 <table class="table-width">
                     <tr>
-                        <td>質問</td>
+                        <td>件名</td>
+                        <td><input type="text" class="input-width"></td>
                     </tr>
                     <tr>
-                        <td>
-                            <textarea rows="4" cols="90" class="tall-row" id="question" name="question"></textarea>
-                        </td> 
+                        <td colspan="2">内容</td> 
                     </tr>
                     <tr>
-                        <td>回答</td> 
-                    </tr>
-                    <tr>
-                        <td>
+                        <td colspan="2">
                             <textarea rows="4" cols="90" class="tall-row" id="answer" name="answer"></textarea>
                         </td>
-                    </tr>                   
-                    
-                </table>
-    
+                    </tr>                                      
+                </table>   
             </form> 
 
             <br>
