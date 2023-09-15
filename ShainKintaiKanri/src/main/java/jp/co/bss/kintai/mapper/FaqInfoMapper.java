@@ -1,5 +1,5 @@
 /**
- * 
+ * FAQ
  */
 package jp.co.bss.kintai.mapper;
 
@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import jp.co.bss.kintai.dao.FaqInfo;
+import java.util.List;
 
 /**
  * @author lyc
@@ -20,6 +21,9 @@ public interface FaqInfoMapper {
 	
 	@Select("SELECT * FROM public.faq WHERE name = #{name}")
 	FaqInfo getFaqInfoByUserName(String name);
+
+	@Select("SELECT * FROM public.faq")
+	List<FaqInfo> getFaqInfoListByUserName();
 	
 	@Insert("INSERT INTO faq (name) VALUES (#{name})")
     void insertFAQ(@Param("name") String name);
