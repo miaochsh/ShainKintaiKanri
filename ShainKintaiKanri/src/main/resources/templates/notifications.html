@@ -92,8 +92,11 @@
         #filePath {
             width: 80%; 
         } 
-        .input-width{
-            width: 98%;
+        .input-width{    
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
         }   
     </style>
 </head>
@@ -148,7 +151,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <textarea rows="4" cols="90" class="tall-row" id="answer" name="answer"></textarea>
+                            <textarea class="input-width tall-row" id="answer" name="answer"></textarea>
                         </td>
                     </tr>                                      
                 </table>   

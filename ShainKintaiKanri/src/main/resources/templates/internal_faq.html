@@ -56,6 +56,12 @@
         .small-font {
         font-size: 13px;
         }
+        .input-width{    
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }   
     </style>
 </head>
 <body>
@@ -79,7 +85,7 @@
             </tr>
             <tr>
                 <td>
-                    <textarea rows="4" cols="75" class="tall-row" id="question1" name="question1" th:text="${faq.question1}"></textarea>
+                    <textarea class="input-width tall-row" id="question1" name="question1" th:text="${faq.question1}"></textarea>
                 </td> 
             </tr>
             <tr>
@@ -87,7 +93,7 @@
             </tr>
             <tr>
                 <td>
-                    <textarea rows="4" cols="75" class="tall-row" id="answer1" name="answer1" th:text="${faq.answer1}"></textarea>
+                    <textarea class="input-width tall-row" id="answer1" name="answer1" th:text="${faq.answer1}"></textarea>
                 </td>
             </tr>
             </tbody>
