@@ -1,4 +1,4 @@
-package jp.co.bss.kintai.dao;
+package jp.co.bss.kintai.model;
 
 import java.sql.Date;
 

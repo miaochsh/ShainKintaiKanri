@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.bss.kintai.dao.FaqInfo;
 import jp.co.bss.kintai.mapper.FaqInfoMapper;
+import jp.co.bss.kintai.model.FaqInfo;
 
 @Service
 public class FaqService {
