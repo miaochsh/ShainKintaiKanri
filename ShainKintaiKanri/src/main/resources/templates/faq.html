@@ -99,8 +99,10 @@
             <tbody id="faqTableBody">
             <tr class="scroll-row" th:each="faq : ${faqs}">
             <td><input type="text" id="inputText" class="input-text" th:value="${faq.question1}" readonly></td>
-            <td class="button-cell"><button id="displayButton" onclick="displayData('${faq}')">表示</button></td>
-            <td class="button-cell"><button id="copyButton" onclick="copyData('${faq.question1}')">複製</button></td>
+					<td class="button-cell"><button id="displayButton"
+							th:attr="data-question=${faq.question1}, data-answer=${faq.answer1}"
+							onclick="displayData(this)">表示</button></td>
+					<td class="button-cell"><button id="copyButton" onclick="copyData('${faq.question1}')">複製</button></td>
             </tr>
             </tbody>
         </table>
@@ -148,10 +150,11 @@
     </div>
 
     <script>
-    function displayData(faq) {
-    	console.log(faq);
-        document.getElementById('question').value = faq.question1;
-        document.getElementById('answer').value = faq.answer;
+    function displayData(button) {
+    	var question1 = button.getAttribute('data-question');
+    	var answer1 = button.getAttribute('data-answer');
+        document.getElementById('question').value = question1;
+        document.getElementById('answer').value = answer1;
     }        
   
         // 复制数据
