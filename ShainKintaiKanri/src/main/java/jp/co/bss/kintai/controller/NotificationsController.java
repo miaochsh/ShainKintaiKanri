@@ -13,18 +13,18 @@ import jp.co.bss.kintai.model.FaqInfo;
 import jp.co.bss.kintai.service.FaqService;
 
 @Controller
-public class FaqLoginController {
+public class NotificationsController {
 	@Autowired
 	private FaqService faqService;
 
-	@GetMapping("/faqLogin")
+	@GetMapping("/notifications")
 	public String faqLogin(HttpSession session, Model model) {
 		String username = (String) session.getAttribute("username");
 		if (username != null) {
 			List<FaqInfo> data = faqService.getFaqInfoList();
 			model.addAttribute("faqs", data);
 		}
-		return "faq";
+		return "notifications";
 	}
 
 }
