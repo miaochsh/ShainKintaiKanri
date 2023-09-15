@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import jp.co.bss.kintai.dao.FaqInfo;
@@ -18,8 +19,10 @@ import jp.co.bss.kintai.dao.FaqInfo;
  */
 @Mapper
 public interface FaqInfoMapper {
+	@Select("SELECT * FROM public.faq WHERE name = #{name}")
 	FaqInfo getFaqInfoByUserName(String name);
 	
+	@Select("SELECT * FROM public.faq")
 	List<FaqInfo> getFaqListInfoByUserName();
 
 	@Insert("INSERT INTO faq (name) VALUES (#{name})")
