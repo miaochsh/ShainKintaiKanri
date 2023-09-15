@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import jp.co.bss.kintai.dao.FaqInfo;
+import jp.co.bss.kintai.model.FaqInfo;
 
 /**
  * @author lyc
