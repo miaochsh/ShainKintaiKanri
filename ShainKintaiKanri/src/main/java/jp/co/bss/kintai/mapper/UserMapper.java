@@ -14,7 +14,7 @@ import jp.co.bss.kintai.model.User;
  */
 @Mapper
 public interface UserMapper {
-  @Select("SELECT * FROM public.user WHERE name = #{name}")
+  @Select("SELECT * FROM public.users WHERE name = #{name}")
 	User getUserInfoByName(String name);
 
 }

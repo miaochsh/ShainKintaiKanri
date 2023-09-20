@@ -4,5 +4,9 @@ create table public.notification_replies (
   , user_id integer
   , reply_content text not null
   , reply_time timestamp(6) without time zone not null
+  , creation_date timestamp(6) without time zone default CURRENT_TIMESTAMP
+  , creator integer
+  , update_date timestamp(6) without time zone default CURRENT_TIMESTAMP
+  , updater integer
   , primary key (id)
 );
