@@ -1,0 +1,105 @@
+/* faqLogin styles.css */
+body {
+	font-family: Arial, sans-serif;
+}
+
+.container {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.logo img {
+	max-width: 200px;
+}
+
+table {
+	width: 80%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	line-height: 18px;
+}
+
+table, th, td {
+	border: 1.5px solid #151414;
+	text-align: left;
+	height: 22px;
+}
+
+td {
+	padding: 0;
+}
+
+.input-text {
+	width: 99%;
+	padding: 0;
+	margin: 0;
+}
+
+.button-cell {
+	padding: 0;
+	border: 1px solid #000;
+	background-color: #ccc;
+}
+
+.button-cell button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.black-border {
+	width: 77%;
+	border: 1px solid #000;
+}
+
+.button-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 2px;
+}
+
+.tall-row {
+	height: 50px;
+}
+
+.table-width {
+	width: 100%;
+}
+
+label {
+	font-size: 13px;
+}
+
+#filePath {
+	width: 80%;
+}
+
+.input-width {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.scroll-row {
+	overflow-y: auto;
+	max-height: 20px;
+}
+
+.red-text {
+	color: red;
+}
+
+.small-font {
+	font-size: 13px;
+}
