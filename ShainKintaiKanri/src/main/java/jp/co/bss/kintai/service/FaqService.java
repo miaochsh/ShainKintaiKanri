@@ -16,31 +16,30 @@ import jp.co.bss.kintai.model.FaqInfo;
 public class FaqService {
 	@Autowired
 	private FaqInfoMapper faqInfoMapper;
-
-	public FaqInfo getFaqInfo(String userNm) {
-		FaqInfo data = faqInfoMapper.getFaqInfoByUserName(userNm);
-
-		if (data == null) {
-			insertFAQ(userNm);
-			data = faqInfoMapper.getFaqInfoByUserName(userNm);
-		}
-
-		return data;
-	}
 	
 	public List<FaqInfo> getFaqInfoList() {
 		List<FaqInfo> data = faqInfoMapper.getFaqListInfoByUserName();
 		return data;
 	}
-
+	
 	@Transactional
-	public void insertFAQ(String username) {
-		faqInfoMapper.insertFAQ(username);
+	public void insertFAQ1(FaqInfo faq) {
+		faqInfoMapper.insertFAQ1(faq);
 	}
 
 	@Transactional
 	public void updateFAQ(FaqInfo faq) {
 		faqInfoMapper.updateFAQ(faq);
+	}
+	
+	@Transactional
+	public void updateFAQ1(FaqInfo faq) {
+		faqInfoMapper.updateFAQ1(faq);
+	}
+	
+	@Transactional
+	public void deleteFAQ(String id) {
+		faqInfoMapper.deleteById(id);
 	}
 
 }
