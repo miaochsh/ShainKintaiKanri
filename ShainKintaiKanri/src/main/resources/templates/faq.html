@@ -12,12 +12,12 @@
             <div class="logo">
                 <img src="./images/bss.png" alt="株式会社BSS">    
                 <div class="button-container">               
-                <button><a href="/faqLogin">登録</a></button>
-                <button><a href="/faqLogin">更新</a></button>
-                <button><a href="/faqLogin">削除</a></button>
+                <button th:if="${level == '0'}"><a href="/faqLogin">登録</a></button>
+                <button th:if="${level == '1'}"><a href="/faqLogin">更新</a></button>
+                <button th:if="${level == '2'}"><a href="/faqLogin">削除</a></button>
                 </div>            
             </div>
-            <table class="scroll-row">
+            <table class="table-body">
             <tbody th:each="faq : ${faqs}">
             <tr>
                 <td>質問</td>
