@@ -1,197 +1,235 @@
 <!DOCTYPE html>
 <html lang="jp" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お知らせ登録</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-		.logo {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-        .logo img {
-            max-width: 200px;
-        }
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-			line-height: 18px;   
-            width: 80%;    
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
-        }
-        table, th, td {
-            border: 1px solid #000; 
-            text-align: left;
-            height: 22px;
-            
-        }
-        td {
-            padding: 0;
-        }
-        .input-text {
-            width: 99%;
-            padding: 0; 
-            margin: 0; 
-        }
-        .button-cell {
-            padding: 0;
-            border: 1px solid #000; 
-            background-color: #ccc; 
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お知らせ登録</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body {
+	font-family: Arial, sans-serif;
+}
 
-        .button-cell button {
-            margin: 0;
-            padding: 0;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-        .black-border {
-            width: 77%;
-            border: 1px solid #000; 
-        }     
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2px;
-        }
-        .button-container label {
-            text-align: left; 
-            margin-right: 10px;
-        }
-        .button-container input[type="Date"] {
-            text-align: left; 
-            margin-right: 10px;
-            flex: 1; 
-        }       
-        .button-container button {
-            margin-left: auto; 
-        }
-        .tall-row{
-			height: 60px;
-		}
-        .table-width{
-            width: 100%;
-            font-size: small;
-        }   
-        label {
-            font-size: 13px;
-        } 
-        #filePath {
-            width: 80%; 
-        } 
-        .input-width{    
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }   
-    </style>
+.container {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.logo img {
+	max-width: 200px;
+}
+
+table {
+	width: 80%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	line-height: 18px;
+	width: 80%;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+table, th, td {
+	border: 1px solid #000;
+	text-align: left;
+	height: 22px;
+}
+
+td {
+	padding: 0;
+}
+
+.input-text {
+	width: 99%;
+	padding: 0;
+	margin: 0;
+}
+
+.button-cell {
+	padding: 0;
+	border: 1px solid #000;
+	background-color: #ccc;
+}
+
+.button-cell button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.black-border {
+	width: 77%;
+	border: 1px solid #000;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2px;
+}
+
+.button-container label {
+	text-align: left;
+	margin-right: 10px;
+}
+
+.button-container input[type="Date"] {
+	text-align: left;
+	margin-right: 10px;
+	flex: 1;
+}
+
+.button-container button {
+	margin-left: auto;
+}
+
+.tall-row {
+	height: 60px;
+}
+
+.table-width {
+	width: 100%;
+	font-size: small;
+}
+
+label {
+	font-size: 13px;
+}
+
+#filePath {
+	width: 80%;
+}
+
+.input-width {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+</style>
 </head>
 <body>
-    <div class="container">
+	<div class="container">
 		<div class="logo">
-            <img src="./images/bss.png" alt="公司图标">
-        </div>
-        <table>
-            <tr>
-                <th colspan="3">お知らせ一覧</th>
-            </tr>
-            <tbody id="faqTableBody">
-            <tr th:each="faq : ${faqs}">
-            <td><input type="text" id="inputText" class="input-text" th:value="${faq.question1}" readonly></td>
-            <td class="button-cell"><button id="displayButton" onclick="displayData('${faq.question1}')">表示</button></td>
-            <td class="button-cell"><button id="copyButton" onclick="copyData('${faq.questio1n}')">返信</button></td>
-            </tr>
-            </tbody>
-        </table>
+			<img src="./images/bss.png" alt="公司图标">
+		</div>
+		<table>
+			<tr>
+				<th colspan="3">お知らせ一覧</th>
+			</tr>
+			<tbody id="faqTableBody">
+				<tr th:each="faq : ${faqs}">
+					<td><input type="text" id="inputText" class="input-text"
+						th:value="${faq.question1}" readonly></td>
+					<td class="button-cell"><button id="displayButton"
+							onclick="displayData('${faq.question1}')">表示</button></td>
+					<td class="button-cell"><button id="copyButton"
+							onclick="copyData('${faq.questio1n}')">返信</button></td>
+				</tr>
+			</tbody>
+		</table>
 
-        <div class="black-border" style="padding: 10px;">
-            <form method="post" action="/insert">
-                <div> 
-                    <div class="button-container">                       
-                    <label for="startDate">掲載期間</label>
-                    <input type="date" id="startDate" name="startDate">
-                    <label for="endDate">~</label>
-                    <input type="date" id="endDate" name="endDate">
+		<div class="black-border" style="padding: 10px;">
+			<form method="post" action="/insert">
+				<div>
+					<div class="button-container">
+						<label for="startDate">掲載期間</label> 
+							<input type="date" id="startTime" name="startTime"> 
+						<label for="endDate">~</label>
+							<input type="date" id="endTime" name="endTime">
 
-                    <button type="submit" name="buttonNm" value="insert">登録</button>
-                    <button type="submit" name="buttonNm" value="update">更新</button>
-                    <button type="submit" name="buttonNm" value="delete">削除</button>
-                    </div>            
-                </div>
-                <div>
-                    <label for="startDate">重要度</label>
-                    <label>
-                        <input type="radio" name="type" value="option1"> 通常
-                    </label>
-                    <label>
-                        <input type="radio" name="type" value="option2"> 重要
-                    </label>
-                </div>
-                <table class="table-width">
-                    <tr>
-                        <td>件名</td>
-                        <td><input type="text" class="input-width"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">内容</td> 
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <textarea class="input-width tall-row" id="answer" name="answer"></textarea>
-                        </td>
-                    </tr>                                      
-                </table>   
-            </form> 
+						<button type="button" id="insertBtn">登録</button>
+						<button type="button" id="updateBtn">更新</button>
+						<button type="button" id="deleteBtn">削除</button>
 
-            <br>
+					</div>
+				</div>
+				<div>
+					<label for="startDate">重要度</label>
+					 <label> 
+					 <input
+						type="radio" name="status" value="1"> 通常
+					</label> <label> <input type="radio" name="status" value="2">
+						重要
+					</label>
+				</div>
+				<table class="table-width">
+					<tr>
+						<td>件名</td>
+						<td><input type="text" name="title" class="input-width"></td>
+					</tr>
+					<tr>
+						<td colspan="2">内容</td>
+					</tr>
+					<tr>
+						<td colspan="2"><textarea class="input-width tall-row"
+								id="content" name="content" ></textarea></td>
+					</tr>
+				</table>
+			</form>
 
-            <form>
-                <label for="fileInput">ファイル</label>
-                <input type="text" id="filePath" readonly>
-                <input type="file" id="fileInput" style="display: none;" onchange="displayFilePath()">
-                <button type="button" id="selectFileButton" onclick="document.getElementById('fileInput').click()">添付</button>
-            </form>
-        </div>        
-    </div>
+			<br>
 
-    <script>
-    function displayData(question) {
-        var tableBody = document.getElementById('faqTableBody');
-        var newRow = tableBody.insertRow(tableBody.rows.length);
-        var cell1 = newRow.insertCell(0);
-        var cell2 = newRow.insertCell(1);
-        var cell3 = newRow.insertCell(2);
-        
-        cell1.innerHTML = '<input type="text" id="inputText" class="input-text" value="' + question1 + '" readonly>';
-        cell2.innerHTML = '<button id="displayButton" onclick="displayData(\'' + question1 + '\')">表示</button>';
-        cell3.innerHTML = '<button id="copyButton" onclick="copyData(\'' + question1 + '\')">複製</button>';
-    }
-  
-        // 复制数据
-        function copyData() {
-            var data = document.querySelector('#inputText').value;
-            // 执行复制逻辑
-            alert('已复制数据: ' + data);
-        }
+			<form>
+				<label for="fileInput">ファイル</label> <input type="text" id="filePath"
+					readonly> <input type="file" id="fileInput"
+					style="display: none;" onchange="displayFilePath()">
+				<button type="button" id="selectFileButton"
+					onclick="document.getElementById('fileInput').click()">添付</button>
+			</form>
+		</div>
+	</div>
 
-        function displayFilePath() {
-            var filePath = document.querySelector('#fileInput').value;
-            document.querySelector('#filePath').value = filePath;
-        }
-    </script>
+	<script>
+		function displayData(question) {
+
+			var tableBody = document.getElementById('faqTableBody');
+			var newRow = tableBody.insertRow(tableBody.rows.length);
+			var cell1 = newRow.insertCell(0);
+			var cell2 = newRow.insertCell(1);
+			var cell3 = newRow.insertCell(2);
+
+			cell1.innerHTML = '<input type="text" id="inputText" class="input-text" value="' + question1 + '" readonly>';
+			cell2.innerHTML = '<button id="displayButton" onclick="displayData(\''
+					+ question1 + '\')">表示</button>';
+			cell3.innerHTML = '<button id="copyButton" onclick="copyData(\''
+					+ question1 + '\')">複製</button>';
+		}
+
+		// 复制数据
+		function copyData() {
+			var data = document.querySelector('#inputText').value;
+			// 执行复制逻辑
+			alert('已复制数据: ' + data);
+		}
+
+		function displayFilePath() {
+			var filePath = document.querySelector('#fileInput').value;
+			document.querySelector('#filePath').value = filePath;
+		}
+
+		$("#insertBtn").click(function() {
+			console.log($("form").serialize())
+			
+		});
+
+		$("#updateBtn").click(function() {
+			console.log($("form").serialize())
+		});
+
+		$("#deleteBtn").click(function() {
+			console.log($("form").serialize())
+		});
+	</script>
 </body>
 </html>

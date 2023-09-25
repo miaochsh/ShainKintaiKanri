@@ -8,5 +8,8 @@ create table public.users (
   , update_date timestamp(6) without time zone
   , create_date timestamp(6) without time zone default now()
   , delete_date timestamp(6) without time zone
+  , creation_date timestamp(6) without time zone default CURRENT_TIMESTAMP
+  , creator integer
+  , updater integer
   , primary key (user_id)
 );
