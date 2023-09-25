@@ -6,16 +6,15 @@ package jp.co.bss.kintai.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import jp.co.bss.kintai.dao.UserInfo;
+import jp.co.bss.kintai.model.User;
 
 /**
  * @author miaoc
  *
  */
 @Mapper
-public interface UserInfoMapper {
-	
-	@Select("SELECT * FROM public.user WHERE name = #{name}")
-	UserInfo getUserInfoByName(String name);
+public interface UserMapper {
+  @Select("SELECT * FROM public.users WHERE name = #{name}")
+	User getUserInfoByName(String name);
 
 }

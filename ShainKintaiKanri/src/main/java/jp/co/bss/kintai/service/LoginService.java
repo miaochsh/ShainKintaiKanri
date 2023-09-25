@@ -6,16 +6,16 @@ package jp.co.bss.kintai.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jp.co.bss.kintai.dao.UserInfo;
-import jp.co.bss.kintai.mapper.UserInfoMapper;
+import jp.co.bss.kintai.mapper.UserMapper;
+import jp.co.bss.kintai.model.User;
 
 @Service
 public class LoginService {
     @Autowired
-    private UserInfoMapper userInfoMapper;
+    private UserMapper userMapper;
 
     public boolean validateUser(String name, String password) {
-        UserInfo userInfo = userInfoMapper.getUserInfoByName(name);
+        User userInfo = userMapper.getUserInfoByName(name);
         if (userInfo != null && userInfo.getPassword().equals(password)) {
             return true; // 验证成功
         }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" href="./css/faqLoginStyles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>社内FAQ登録</title>
+</head>
+<body>
+	<div class="container">
+		<div class="logo">
+			<img src="./images/bss.png" alt="株式会社BSS">
+		</div>
+		<div class="table-header-container">
+			<table>
+				<thead class="table-header">
+					<tr>
+						<th colspan="3">社内FAQ</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="table-body">
+			<table>
+				<tbody>
+					<tr th:each="faq : ${faqs}">
+						<td><input type="text" id="inputText" class="input-text"
+							th:value="${faq.question}" readonly></td>
+						<td class="button-cell"><button id="displayButton"
+								th:attr="data-id=${faq.id}, data-question=${faq.question}, data-answer=${faq.answer}"
+								onclick="displayData(this)">表示</button></td>
+						<td class="button-cell"><button id="copyButton"
+								th:attr="data-question=${faq.question}" onclick="copyData(this)">複製</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="padding-top: 30px;">
+			<div id="insertSuccessMessage" class="red-text small-font"
+				style="display: none;">登録成功！</div>
+			<div id="updateSuccessMessage" class="red-text small-font"
+				style="display: none;">更新成功！</div>
+			<div id="deleteSuccessMessage" class="red-text small-font"
+				style="display: none;">削除成功！</div>
+			<div class="black-border"
+				style="padding-top: 20px; padding: 10px; border: 1.5px solid #151414;">
+				<form method="post" action="/insert" enctype="multipart/form-data">
+					<div>
+						<div class="button-container">
+							<button th:if="${level == '0'}" type="submit" name="buttonNm"
+								value="insert">登録</button>
+							<button th:if="${level == '1'}" type="submit" name="buttonNm"
+								value="update">更新</button>
+							<button type="submit" name="buttonNm" value="delete">削除</button>
+						</div>
+					</div>
+					<table class="table-width">
+						<tr style="display: none;">
+							<td><textarea class="input-width tall-row" id="questionId"
+									name="questionId"></textarea></td>
+						</tr>
+						<tr>
+							<td>質問</td>
+						</tr>
+						<tr>
+							<td><textarea class="input-width tall-row" id="question"
+									name="question"></textarea></td>
+						</tr>
+						<tr>
+							<td>回答</td>
+						</tr>
+						<tr>
+							<td><textarea class="input-width tall-row" id="answer"
+									name="answer"></textarea></td>
+						</tr>
+
+					</table>
+
+					<br>
+					<div>
+						<label for="fileInput">ファイル</label> <input type="text"
+							id="filePath" readonly> <input type="file" id="fileInput"
+							name="file" style="display: none;" onchange="displayFilePath()">
+						<button type="button" id="selectFileButton"
+							onclick="document.getElementById('fileInput').click()">添付</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+	<script>
+    function displayData(button) {
+    	var id = button.getAttribute('data-id');
+    	var question = button.getAttribute('data-question');
+    	var answer = button.getAttribute('data-answer');
+    	
+    	document.getElementById('questionId').value = id;
+        document.getElementById('question').value = question;
+        document.getElementById('answer').value = answer;  
+        console.log(id);
+    }   
+
+        function copyData(button) {
+            var data = button.getAttribute('data-question');
+            var textarea = document.createElement("textarea");
+            textarea.value = data;
+            
+            document.body.appendChild(textarea);           
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('	複製完了：' + data);
+        }
+
+        function displayFilePath() {
+            var filePath = document.querySelector('#fileInput').value;
+            document.querySelector('#filePath').value = filePath;
+        }
+    </script>
+
+
+	<script th:if="${insertSuccess}">
+    document.getElementById('insertSuccessMessage').style.display = 'block';
+    </script>
+	<script th:if="${updateSuccess}">
+    document.getElementById('updateSuccessMessage').style.display = 'block';
+    </script>
+	<script th:if="${deleteSuccess}">
+    document.getElementById('deleteSuccessMessage').style.display = 'block';
+    </script>
+</body>
+</html>

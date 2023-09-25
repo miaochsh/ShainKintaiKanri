@@ -1,130 +1,156 @@
 <!DOCTYPE html>
 <html lang="jp" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>画面检索</title>
-    <style>
-        /* 样式可以根据需求进行自定义 */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-		.logo {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-        .logo img {
-            max-width: 200px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-			line-height: 18px;
-        }
-        table, th, td {
-            border: 2px solid #151414;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-		th:nth-child(2),td:nth-child(2){
-			width: 70px;
-		}
-        a {
-            text-decoration: none;
-            color: rgb(17, 17, 18);
-			font-size: small;
-        }
-        .search-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .search-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-        .search-button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        .clear-button {
-            background-color: #ccc;
-            color: black;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
-            cursor: pointer;
-			float: right;
-        }
-        .results {
-            background-color: white;
-            padding: 20px;
-            border-radius: 3px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-			margin-top: 20px; 
-			height: 100px;
-			overflow-y: auto;
-        }
-        .radio-buttons {
-            margin-bottom: 20px;
-        }
-		.span-search {
-			width: 100px;
-		}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画面检索</title>
+<style>
+/* 样式可以根据需求进行自定义 */
+body {
+	width: 100vw; /* 设置body的宽度占满视口宽度 */
+	height: 100vh; /* 设置body的高度占满视口高度 */
+	display: flex;
+	justify-content: center; /* 水平居中 */
+	align-items: center; /* 垂直居中 */
+	margin: 0; /* 去除默认的margin */
+	padding: 0; /* 去除默认的padding */
+}
+
+.container {
+    display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 93vh; /* 设置内容高度为屏幕的高度 */
+}
+
+.box{
+	margin-top: 3%;
+	width: 90%;
+}
+
+.logo {
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.logo img {
+	max-width: 200px;
+}
+
+table {
+	width: 90%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	line-height: 18px;
+	margin: 0 auto; /* 垂直居中 */
+}
+
+table, th, td {
+	border: 2px solid #151414;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+}
+
+th:nth-child(2), td:nth-child(2) {
+	width: 70px;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(17, 17, 18);
+	font-size: small;
+}
+
+/* 自定义文章中的换行线样式 */
+.article-content {
+    margin: 0 auto; /* 垂直居中 */
+    width: 90%;
+    margin: 0 auto; /* 水平居中 */
+    border-bottom: 2px solid #151414; /* 添加底部边框线 */
+    margin-bottom: 10px; /* 控制元素之间的距离 */
+}
+
+.button-container{
+	margin-bottom: 5%;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-around;   
+}
+
+.button-container button {
+    width: 15%;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+</style>
 </head>
 <body>
-    <div class="container">
-		<div class="logo">
-            <img src="./images/bss.png" alt="公司图标">
-        </div>
-        <table>
-            <tr>
-                <td>会社規定</td>
-                <td><a href="">もっと見る</a></td>
-            </tr>
-            <tr>
-                <td>会社待遇説明<br>就業規則</td> 
-            </tr>
-            <tr>
-                <td>新人研修資料</td>
-                <td><a href="">もっと見る</a></td>
-            </tr>
-            <tr>
-                <td>エンジニア用語集<br>マナー</td> 
-            </tr>
-        </table>
+	<div class="container">
 
-       
-       <div class="button-container" style="margin-top: 20px; text-align: center;">
-    <button style="margin: 5px; padding: 10px;"><a href="/sharedFiles">共有ファイル</a></button>
-    <button style="margin: 5px; padding: 10px;"><a href="various_applications.html">各種申請</a></button>
-    <button style="margin: 5px; padding: 10px;"><a href="schedule.html">予定表</a></button>
-    <button style="margin: 5px; padding: 10px;"><a href="notifications.html">お知らせ登録</a></button>
-    <button style="margin: 5px; padding: 10px;"><a href="internal_faq.html">社内FAQ</a></button>
-</div>
-       
+		<div class="box">
+			<div class="logo">
+				<img src="./images/bss.png" alt="公司图标">
+			</div>
+			<table>
+				<tr>
+					<td>重要なお知らせ</td>
+					<td><a href="">もっと見る</a></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div>
+							<p class="article-content">11</p>
+							<p class="article-content">22</p>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>お知らせ</td>
+					<td><a href="">もっと見る</a></td>
+				</tr>
+				<tr>
+					<td colspan="2"><div>
+							<p class="article-content">11</p>
+							<p class="article-content">22</p>
+						</div></td>
+				</tr>
+			</table>
+		</div>
+		
 
-        
-    </div>
 
- 
+		<div class="button-container">
+			<button>
+				<a href="/sharedFiles">ファイル共有検索</a>
+			</button>
+			<button>
+				<a href="/applications">各種申請</a>
+			</button>
+			<button>
+				<a href="/schedule">予定表</a>
+			</button>
+			<button >
+				<a href="/notifications">お知らせ登録</a>
+			</button>
+			<button >
+				<a href="/faq">社内FAQ</a>
+			</button>
+		</div>
+
+
+
+	</div>
+
+
 </body>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/faqStyles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社内FAQ</title>
+</head>
+<body>
+    <div class="container">		
+        <form>
+            <div class="logo">
+                <img src="./images/bss.png" alt="株式会社BSS">    
+                <div class="button-container">               
+                <button th:if="${level == '0'}"><a href="/faqLogin">登録</a></button>
+                <button th:if="${level == '1'}"><a href="/faqLogin">更新</a></button>
+                <button th:if="${level == '2'}"><a href="/faqLogin">削除</a></button>
+                </div>            
+            </div>
+            <table class="table-body">
+            <tbody th:each="faq : ${faqs}">
+            <tr>
+                <td>質問</td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea class="input-width tall-row" id="question" name="question" th:text="${faq.question}"></textarea>
+                </td> 
+            </tr>
+            <tr>
+                <td>回答</td> 
+            </tr>
+            <tr>
+                <td>
+                    <textarea class="input-width tall-row" id="answer" name="answer" th:text="${faq.answer}"></textarea>
+                </td>
+            </tr>
+            </tbody>
+            </table>           
+        </form>             
+    </div>
+</body>
+</html>

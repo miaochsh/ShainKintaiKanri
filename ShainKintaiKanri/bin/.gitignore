@@ -31,7 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
-
+/bin/
 
 ### MVN ###
 .mvn
@@ -41,6 +41,3 @@ build/
 
 ### Servers ###
 Servers
-
-### settings ###
-.settings
