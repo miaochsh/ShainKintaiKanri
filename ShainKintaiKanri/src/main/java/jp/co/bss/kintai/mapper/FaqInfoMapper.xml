@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.bss.kintai.mapper.FaqInfoMapper">
 
-    <select id="getFaqListInfoByUserName" resultType="FaqInfo">
+    <select id="getFaqListInfoByUserName" resultType="jp.co.bss.kintai.model.FaqInfo">
         SELECT * FROM faq WHERE answerflg &lt;&gt; '2' ORDER BY create_date DESC;
     </select>
 
-    <insert id="insertFAQ1" parameterType="FaqInfo">
+    <insert id="insertFAQ1" parameterType="jp.co.bss.kintai.model.FaqInfo">
         INSERT INTO faq (claimer, question, answerflg, create_date, blob_data)
         VALUES (#{claimer}, #{question}, #{answerflg}, #{create_date}, #{blob_data});
     </insert>
 
-    <update id="updateFAQ" parameterType="FaqInfo">
+    <update id="updateFAQ" parameterType="jp.co.bss.kintai.model.FaqInfo">
         UPDATE faq
         SET reponder = #{reponder}, answer = #{answer}, answerflg = #{answerflg}, update_date = #{update_date}, blob_data = #{blob_data}
         WHERE id = #{id};
     </update>
 
-    <update id="updateFAQ1" parameterType="FaqInfo">
+    <update id="updateFAQ1" parameterType="jp.co.bss.kintai.model.FaqInfo">
         UPDATE faq
         SET answerflg = #{answerflg}, delete_date = #{delete_date}
         WHERE id = #{id};
