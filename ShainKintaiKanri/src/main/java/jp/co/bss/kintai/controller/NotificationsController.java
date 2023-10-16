@@ -18,12 +18,12 @@ public class NotificationsController {
 	private FaqService faqService;
 
 	@GetMapping("/notifications")
-	public String faqLogin(HttpSession session, Model model) {
-		String username = (String) session.getAttribute("username");
-		if (username != null) {
-			List<FaqInfo> data = faqService.getFaqInfoList();
-			model.addAttribute("faqs", data);
-		}
+	public String showNotfications(HttpSession session, Model model) {
+//		String username = (String) session.getAttribute("username");
+//		if (username != null) {
+//			List<FaqInfo> data = faqService.getFaqInfoList();
+//			model.addAttribute("faqs", data);
+//		}
 		return "notifications";
 	}
 

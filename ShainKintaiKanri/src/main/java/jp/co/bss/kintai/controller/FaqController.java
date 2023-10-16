@@ -26,11 +26,19 @@ public class FaqController {
 	/*
 	 * Faq情報一覧画面を表示
 	 */
-	@GetMapping("/faq")
-	public String faq(HttpSession session, Model model) {
-		List<FaqInfo> data = faqService.getFaqInfoList();
-		model.addAttribute("faqs", data);
-		return "faq";
-	}	
+//	@GetMapping("/faq")
+//	public String faq(HttpSession session, Model model) {
+//		List<FaqInfo> data = faqService.getFaqInfoList();
+//		model.addAttribute("faqs", data);
+//		return "faq";
+//	}	
+	
+	/*
+	 * test code
+	 */
+    @GetMapping("/faq")
+    public String faq() {
+        return "faq";
+    }
 	
 }
