@@ -5,7 +5,7 @@ import java.sql.Date;
  * Notice情報
  *
  */
-public class NoticeInfo{
+public class NotificationsInfo{
 	/**
 	 * ID
 	 */

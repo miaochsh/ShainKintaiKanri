@@ -32,13 +32,13 @@ public class FaqLoginController {
 	 */
 	@GetMapping("/faqLogin")
 	public String faqLogin(HttpSession session, Model model) {
-		/*
-		 * List<FaqInfo> data = faqService.getFaqInfoList(); model.addAttribute("faqs",
-		 * data);
-		 */
+
+		List<FaqInfo> data = faqService.getFaqInfoList();
+		model.addAttribute("faqs", data);
+
 		return "faqLogin";
 	}
-	
+
 	/*
 	 * Faq情報 登録処理
 	 */
@@ -83,7 +83,7 @@ public class FaqLoginController {
 					faq.setBlob_data(fileBytes);
 					// 0:新規、1:更新、2:削除
 					faq.setAnswerflg("1");
-					//faq.setUpdate_date(currentDate);
+					// faq.setUpdate_date(currentDate);
 
 					faqService.updateFAQ(faq);
 
@@ -99,7 +99,7 @@ public class FaqLoginController {
 					faq.setDelete_date(currentDate);
 
 					faqService.updateFAQ1(faq);
-					//faqService.deleteFAQ(questionId);
+					// faqService.deleteFAQ(questionId);
 
 					data = faqService.getFaqInfoList();
 					model.addAttribute("faqs", data);
@@ -110,7 +110,7 @@ public class FaqLoginController {
 
 		} catch (Exception e) {
 			System.err.println("Error:" + e.getMessage());
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
 		return "faqLogin";
 	}
