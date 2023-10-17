@@ -32,10 +32,8 @@ public class FaqLoginController {
 	 */
 	@GetMapping("/faqLogin")
 	public String faqLogin(HttpSession session, Model model) {
-
 		List<FaqInfo> data = faqService.getFaqInfoList();
 		model.addAttribute("faqs", data);
-
 		return "faqLogin";
 	}
 
