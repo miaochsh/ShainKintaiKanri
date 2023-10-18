@@ -7,20 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import jp.co.bss.kintai.service.FaqService;
+import jp.co.bss.kintai.model.NotificationsInfo;
+import jp.co.bss.kintai.service.NotificationsService;
 
 @Controller
 public class NotificationsController {
+
 	@Autowired
-	private FaqService faqService;
+	private NotificationsService notificationsService;
 
 	@GetMapping("/notifications")
-	public String showNotification(HttpSession session, Model model) {
-//		String username = (String) session.getAttribute("username");
-//		if (username != null) {
-//			List<FaqInfo> data = faqService.getFaqInfoList();
-//			model.addAttribute("faqs", data);
-//		}
+	public String showNotifications(HttpSession session, Model model) {
+		List<NotificationsInfo> data = notificationsService.getNotificationsInfoList();
+		model.addAttribute("notifications", data);
 		return "notifications";
 	}
 

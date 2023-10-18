@@ -20,6 +20,7 @@ public class FaqController {
 	/*
 	 * Faq情報 Service
 	 */
+
 	@Autowired
 	private FaqService faqService;
 
@@ -31,6 +32,5 @@ public class FaqController {
 		List<FaqInfo> data = faqService.getFaqInfoList();
 		model.addAttribute("faqs", data);
 		return "faq";
-	}	
-	
+	}
 }
