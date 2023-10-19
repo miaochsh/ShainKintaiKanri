@@ -4,8 +4,8 @@ create table public.notifications (
   , content text not null
   , status character varying(50) default '通常'
   , file_content bytea
-  , start_time timestamp(6) without time zone not null
-  , end_time timestamp(6) without time zone not null
+  , start_time timestamp(6) without time zone
+  , end_time timestamp(6) without time zone
   , posted_by integer
   , created_at timestamp(6) without time zone default CURRENT_TIMESTAMP
   , updated_at timestamp(6) without time zone default CURRENT_TIMESTAMP
