@@ -23,7 +23,7 @@ public class LoginController {
 	        if (loginService.validateUser(name, password)) {
 	        	session.setAttribute("username", name);
 	            // 验证成功，返回成功页面或进行其他操作
-	            return "home";
+	            return "redirect:/home";
 	        } else {
 	            // 验证失败，返回失败页面或进行其他操作
 	            return "error";
