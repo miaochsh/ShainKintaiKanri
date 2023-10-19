@@ -17,17 +17,17 @@ body {
 }
 
 .container {
-    display: flex;
+	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-    width: 80%;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 93vh; /* 设置内容高度为屏幕的高度 */
+	width: 80%;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	height: 93vh; /* 设置内容高度为屏幕的高度 */
 }
 
-.box{
+.box {
 	margin-top: 3%;
 	width: 90%;
 }
@@ -70,28 +70,27 @@ a {
 
 /* 自定义文章中的换行线样式 */
 .article-content {
-    margin: 0 auto; /* 垂直居中 */
-    width: 90%;
-    margin: 0 auto; /* 水平居中 */
-    border-bottom: 2px solid #151414; /* 添加底部边框线 */
-    margin-bottom: 10px; /* 控制元素之间的距离 */
+	margin: 0 auto; /* 垂直居中 */
+	width: 90%;
+	margin: 0 auto; /* 水平居中 */
+	border-bottom: 2px solid #151414; /* 添加底部边框线 */
+	margin-bottom: 10px; /* 控制元素之间的距离 */
 }
 
-.button-container{
+.button-container {
 	margin-bottom: 5%;
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-    justify-content: space-around;   
+	display: flex;
+	flex-direction: row;
+	width: 90%;
+	justify-content: space-around;
 }
 
 .button-container button {
-    width: 15%;
-    margin: 5px;
-    padding: 10px;
-    text-align: center;
+	width: 15%;
+	margin: 5px;
+	padding: 10px;
+	text-align: center;
 }
-
 </style>
 </head>
 <body>
@@ -103,30 +102,32 @@ a {
 			</div>
 			<table>
 				<tr>
-					<td>重要なお知らせ</td>
+					<th>重要なお知らせ</th>
 					<td><a href="">もっと見る</a></td>
 				</tr>
+				<tbody id="noticeTableBody">
+					<tr th:each="notifications : ${notificationTitle}">
+						<td><a class="input-width tall-row" id="title" th:text="${notifications.title}"></a></td>
+						<td class="button-cell"><button id="displayButton"
+								th:attr="data-id=${notifications.id}, data-start_time=${notifications.start_time}, data-end_time=${notifications.end_time}, data-status=${notifications.status}, data-title=${notifications.title}, data-content=${notifications.content}"
+								onclick="displayData(this)">表示</button></td>
+					</tr>
+				</tbody>
 				<tr>
-					<td colspan="2">
-						<div>
-							<p class="article-content">11</p>
-							<p class="article-content">22</p>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>お知らせ</td>
+					<th>お知らせ</th>
 					<td><a href="">もっと見る</a></td>
 				</tr>
-				<tr>
-					<td colspan="2"><div>
-							<p class="article-content">11</p>
-							<p class="article-content">22</p>
-						</div></td>
-				</tr>
+				<tbody id="noticeTableBody">
+					<tr th:each="notifications : ${notificationTitle}">
+						<td><a class="input-width tall-row" id="title" th:text="${notifications.title}"></a></td>
+						<td class="button-cell"><button id="displayButton"
+								th:attr="data-id=${notifications.id}, data-start_time=${notifications.start_time}, data-end_time=${notifications.end_time}, data-status=${notifications.status}, data-title=${notifications.title}, data-content=${notifications.content}"
+								onclick="displayData(this)">表示</button></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
-		
+
 
 
 		<div class="button-container">
@@ -139,10 +140,10 @@ a {
 			<button>
 				<a href="/schedule">予定表</a>
 			</button>
-			<button >
+			<button>
 				<a href="/notifications">お知らせ登録</a>
 			</button>
-			<button >
+			<button>
 				<a href="/faq">社内FAQ</a>
 			</button>
 		</div>
