@@ -1,5 +1,6 @@
 package jp.co.bss.kintai.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -20,8 +21,15 @@ public class HomeController {
  
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
-    	List<HomeInfo> data = homeService.getNotificationTitleInfoList();
-		model.addAttribute("notificationTitle", data);
+    	List<HomeInfo> notificationsData = homeService.getNotificationTitleInfoList();
+    	
+        // データを降順に並べ替え
+        Collections.reverse(notificationsData);
+
+        // 最後から5件分を抽出
+        List<HomeInfo> lastFiveData = notificationsData.subList(0, Math.min(5, notificationsData.size()));
+        
+		model.addAttribute("notificationTitle", lastFiveData);
         return "home";
     }
 }
