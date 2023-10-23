@@ -3,7 +3,7 @@
 <mapper namespace="jp.co.bss.kintai.mapper.HomeInfoMapper">
 
     <select id="getNotificationTitleListInfoByUserName" resultType="jp.co.bss.kintai.model.HomeInfo">
-        SELECT title FROM notifications ;
+        SELECT title, status, creation_date FROM notifications ;
     </select>
 
 </mapper>
