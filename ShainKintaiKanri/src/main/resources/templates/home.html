@@ -106,7 +106,7 @@ a {
 					<td><a href="">もっと見る</a></td>
 				</tr>
 				<tbody id="noticeTableBody">
-					<tr th:each="notifications : ${notificationTitle}">
+					<tr th:each="notifications : ${importantNotificationTitle}">
 						<td><a class="input-width tall-row" id="title" th:text="${notifications.title}"></a></td>
 						<td class="button-cell"><button id="displayButton"
 								th:attr="data-id=${notifications.id}, data-start_time=${notifications.start_time}, data-end_time=${notifications.end_time}, data-status=${notifications.status}, data-title=${notifications.title}, data-content=${notifications.content}"
@@ -118,7 +118,7 @@ a {
 					<td><a href="">もっと見る</a></td>
 				</tr>
 				<tbody id="noticeTableBody">
-					<tr th:each="notifications : ${notificationTitle}">
+					<tr th:each="notifications : ${normalNotificationTitle}">
 						<td><a class="input-width tall-row" id="title" th:text="${notifications.title}"></a></td>
 						<td class="button-cell"><button id="displayButton"
 								th:attr="data-id=${notifications.id}, data-start_time=${notifications.start_time}, data-end_time=${notifications.end_time}, data-status=${notifications.status}, data-title=${notifications.title}, data-content=${notifications.content}"
