@@ -16,34 +16,35 @@ import jp.co.bss.kintai.service.HomeService;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	private HomeService homeService;
- 
-    @GetMapping("/home")
-    public String home(HttpSession session, Model model) {
-    	List<HomeInfo> notificationsData = homeService.getNotificationTitleInfoList();
-    	
-    	// 通常のお知らせと重要なお知らせを区別して抽出
-        List<HomeInfo> normalNotifications = new ArrayList<>();
-        List<HomeInfo> importantNotifications = new ArrayList<>();
-        for (HomeInfo notificationTitle : notificationsData) {
-            if ("1".equals(notificationTitle.getStatus())) {  // ステータスが1の場合は通常のお知らせ
-                normalNotifications.add(notificationTitle);
-            } else if ("0".equals(notificationTitle.getStatus())) {  // ステータスが0の場合は重要なお知らせ
-                importantNotifications.add(notificationTitle);
-            }
-        }
-        
-        // 重要・通常お知らせのデータを降順に並べ替え
-        Collections.reverse(normalNotifications);
-        Collections.reverse(importantNotifications);
 
-        // 通常お知らせの最後から5件分を抽出
-        List<HomeInfo> lastFiveNormalNotificationsTitle = normalNotifications.subList(0, Math.min(5, normalNotifications.size()));
+	@GetMapping("/home")
+	public String home(HttpSession session, Model model) {
+		List<HomeInfo> notificationsData = homeService.getNotificationTitleInfoList();
 
-        model.addAttribute("normalNotificationTitle", lastFiveNormalNotificationsTitle);
-        model.addAttribute("importantNotificationTitle", importantNotifications);
-        return "home";
-    }
+		// 通常のお知らせと重要なお知らせを区別して抽出
+		List<HomeInfo> normalNotifications = new ArrayList<>();
+		List<HomeInfo> importantNotifications = new ArrayList<>();
+		for (HomeInfo notificationTitle : notificationsData) {
+			if ("0".equals(notificationTitle.getStatus())) { 	// ステータス：0の場合は重要なお知らせ
+				importantNotifications.add(notificationTitle);
+			} else { 											// ステータス：その他の場合は通常のお知らせ
+				normalNotifications.add(notificationTitle);
+			}
+		}
+
+		// 重要・通常お知らせのデータを降順に並べ替え
+		Collections.reverse(normalNotifications);
+		Collections.reverse(importantNotifications);
+
+		// 通常お知らせの最後から5件分を抽出
+		List<HomeInfo> lastFiveNormalNotificationsTitle = normalNotifications.subList(0,
+				Math.min(5, normalNotifications.size()));
+
+		model.addAttribute("normalNotificationTitle", lastFiveNormalNotificationsTitle);
+		model.addAttribute("importantNotificationTitle", importantNotifications);
+		return "home";
+	}
 }
