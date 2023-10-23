@@ -1,5 +1,6 @@
 package jp.co.bss.kintai.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,10 +28,20 @@ public class HomeController {
 		// 通常のお知らせと重要なお知らせを区別して抽出
 		List<HomeInfo> normalNotifications = new ArrayList<>();
 		List<HomeInfo> importantNotifications = new ArrayList<>();
+
+		// 現在の日時を取得
+		LocalDate now = LocalDate.now();
+		// 重要なお知らせの任意表示期間を設定 (本実装では3ヵ月)
+		LocalDate anyMonthAgo = now.minusMonths(3);
+
+		// 重要なお知らせと通常のお知らせの選別ロジック
 		for (HomeInfo notificationTitle : notificationsData) {
-			if ("0".equals(notificationTitle.getStatus())) { 	// ステータス：0の場合は重要なお知らせ
-				importantNotifications.add(notificationTitle);
-			} else { 											// ステータス：その他の場合は通常のお知らせ
+			if ("0".equals(notificationTitle.getStatus())) { // ステータス：0の場合は重要なお知らせ
+				LocalDate creationDate = notificationTitle.getCreation_date().toLocalDate();
+				if (anyMonthAgo.isBefore(creationDate) || anyMonthAgo.isEqual(creationDate)) { // 任意の月以内の通知のみを選別
+					importantNotifications.add(notificationTitle);
+				}
+			} else { // ステータス：その他の場合は通常のお知らせ
 				normalNotifications.add(notificationTitle);
 			}
 		}
