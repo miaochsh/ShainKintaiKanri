@@ -95,6 +95,17 @@ a {
 .spacer {
 	padding: 5px;
 }
+
+.new-badge {
+  width: 100px;
+  padding: 1px 3px;
+  border: solid 1px #ff0000;
+  border-radius: 10%;
+  color: #ff0000;
+  margin-left: 20px;
+  font-size: 13px;
+}
+
 </style>
 </head>
 <body>
@@ -113,6 +124,7 @@ a {
 					<tr th:each="notifications : ${importantNotificationTitle}">
 						<td><a class="input-width tall-row" id="title"
 							th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title}"></a>
+							<span th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}" class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span>
 						</td>
 						<td class="button-cell">
 							<button id="displayButton"
@@ -134,6 +146,7 @@ a {
 					<tr th:each="notifications : ${normalNotificationTitle}">
 						<td><a class="input-width tall-row" id="title"
 							th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title}"></a>
+							<span th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}" class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span>
 						</td>
 						<td class="button-cell">
 							<button id="displayButton"
