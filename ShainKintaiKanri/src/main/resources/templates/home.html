@@ -95,6 +95,31 @@ a {
 .spacer {
 	padding: 5px;
 }
+
+.new-badge {
+  width: 100px;
+  padding: 1px 3px;
+  border: solid 1px #ff0000;
+  border-radius: 10%;
+  color: #ff0000;
+  margin-left: 20px;
+  font-size: 13px;
+  position: relative; 
+}
+.new-badge::after {
+  content: "！";        /* 表示する記号や文字を入れる（1文字） */
+  position: absolute;   /* 相対位置を指定 */
+  top: -10px;           /* 表示位置を上から-10pxの位置にする */
+  right: -10px;         /* 表示位置を右から-10pxの位置にする */
+  color: #FFF;          /* 文字色を白色に指定 */
+  line-height: 20px;    /* 行の高さを指定 */
+  font-weight: bold;    /* 太文字にする */
+  text-align: center;   /* 文字を中央揃えにする */
+  width: 20px;          /* 幅を20pxに指定 */
+  background: #F00;     /* 背景色を赤に指定 */
+  border-radius: 50%;   /* 角丸を50%に指定 */
+}
+
 </style>
 </head>
 <body>
@@ -113,6 +138,7 @@ a {
 					<tr th:each="notifications : ${importantNotificationTitle}">
 						<td><a class="input-width tall-row" id="title"
 							th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title}"></a>
+							<span th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}" class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span>
 						</td>
 						<td class="button-cell">
 							<button id="displayButton"
@@ -134,6 +160,7 @@ a {
 					<tr th:each="notifications : ${normalNotificationTitle}">
 						<td><a class="input-width tall-row" id="title"
 							th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title}"></a>
+							<span th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}" class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span>
 						</td>
 						<td class="button-cell">
 							<button id="displayButton"
