@@ -19,6 +19,10 @@ public class NotificationsService {
 		return data;
 	}
 	
+	public List<NotificationsInfo> getImportantNotifications() {
+	    return notificationsInfoMapper.getImportantNotifications();
+	}
+	
 	@Transactional
 	public void insertNotifications1(NotificationsInfo notifications) {
 		notificationsInfoMapper.insertNotifications1(notifications);
