@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お知らせ一覧</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+/* 样式可以根据需求进行自定义 */
+body {
+	width: 100vw; /* 设置body的宽度占满视口宽度 */
+	height: 100vh; /* 设置body的高度占满视口高度 */
+	display: flex;
+	justify-content: center; /* 水平居中 */
+	align-items: center; /* 垂直居中 */
+	margin: 0; /* 去除默认的margin */
+	padding: 0; /* 去除默认的padding */
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	height: 93vh; /* 设置内容高度为屏幕的高度 */
+}
+
+.box {
+	margin-top: 3%;
+	width: 90%;
+}
+
+.logo {
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.logo img {
+	max-width: 200px;
+}
+
+table {
+	width: 90%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	line-height: 18px;
+	margin: 0 auto; /* 垂直居中 */
+}
+
+table, th, td {
+	border: 2px solid #151414;
+}
+
+th, td {
+	padding: 8px;
+	text-align: left;
+}
+
+th:nth-child(2), td:nth-child(2) {
+	width: 70px;
+}
+
+a {
+	text-decoration: none;
+	color: rgb(17, 17, 18);
+	font-size: small;
+}
+
+/* 自定义文章中的换行线样式 */
+.new-badge {
+	width: 100px;
+	padding: 1px 3px;
+	border: solid 1px #ff0000;
+	border-radius: 10%;
+	color: #ff0000;
+	margin-left: 20px;
+	font-size: 13px;
+}
+
+.toggle_input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.toggle_label {
+  width: 45px;
+  height: 20px;
+  background: #ccc;
+  position: relative;
+  display: inline-block;
+  border-radius: 40px;
+  transition: 0.4s;
+  box-sizing: border-box;
+}
+
+.toggle_label:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: 0.4s;
+}
+
+.toggle_input:checked + .toggle_label {
+  background-color: #4BD865;
+}
+
+.toggle_input:checked + .toggle_label:after {
+  left: 25px;
+}
+
+.toggle_button {
+  position: relative;
+  width: 100px;
+  height: 35px;
+  margin-left: 45px;
+}
+.content_pos {
+  position: relative;
+  top: -4px;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <div class="logo">
+            <img src="./images/bss.png" alt="公司图标">
+        </div>
+        <table>
+            <div class="toggle_button">
+                <input id="toggle" class="toggle_input" type='checkbox'>
+                <label class="toggle_label"></label>
+                <span class="content_pos">重要</span>
+                
+            </div>
+            <button>
+            検索
+            </button>
+            
+            <tr>
+                <th>お知らせ一覧</th>
+            </tr>
+            <tbody id="noticeTableBody">
+                <tr th:each="notifications : ${normalNotifications}">
+                    <td><a class="input-width tall-row" id="title"
+                           th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title + '　　　'  + notifications.status}"></a>
+                        <span
+                                th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}"
+                                class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

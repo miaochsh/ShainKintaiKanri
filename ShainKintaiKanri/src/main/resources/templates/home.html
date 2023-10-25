@@ -106,6 +106,14 @@ a {
   font-size: 13px;
 }
 
+.buttun-viewMore {
+	margin-bottom: 5%;
+	display: flex;
+	flex-direction: row;
+	width: 120%;
+	justify-content: space-around;
+}
+
 </style>
 </head>
 <body>
@@ -158,8 +166,12 @@ a {
 			</table>
 		</div>
 
-
-
+		<div>
+		<button class="buttun-viewMore">
+			<a th:href="@{/notifications_search}">もっと見る</a>
+		</button>
+		</div>
+		
 		<div class="button-container">
 			<button>
 				<a href="/sharedFiles">ファイル共有検索</a>

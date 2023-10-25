@@ -6,4 +6,7 @@
         SELECT * FROM notifications ;
     </select>
 
+	<select id="getNormalNotifications" resultType="jp.co.bss.kintai.model.NotificationsInfo">
+		SELECT * FROM notifications WHERE status = '1';
+	</select>
 </mapper>
