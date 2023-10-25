@@ -15,6 +15,8 @@ public interface NotificationsInfoMapper {
 	
 	List<NotificationsInfo> getNotificationsListInfoByUserName();
 	
+	List<NotificationsInfo> getImportantNotifications();
+	
 	void insertNotifications1(NotificationsInfo notifications);
 
 	void updateNotifications(NotificationsInfo notifications);
