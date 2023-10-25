@@ -38,3 +38,4 @@ public class NotificationsSearchController {
         return "notificationsSearch";
     }
 }
+

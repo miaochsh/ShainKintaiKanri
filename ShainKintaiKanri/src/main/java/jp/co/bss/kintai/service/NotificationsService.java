@@ -13,7 +13,7 @@ import jp.co.bss.kintai.model.NotificationsInfo;
 public class NotificationsService {
 	@Autowired
 	private NotificationsInfoMapper notificationsInfoMapper;
-
+	
 	public List<NotificationsInfo> getNotificationsInfoList() {
 		List<NotificationsInfo> data = notificationsInfoMapper.getNotificationsListInfoByUserName();
 		return data;
@@ -32,12 +32,12 @@ public class NotificationsService {
 	public void updateNotifications(NotificationsInfo notifications) {
 		notificationsInfoMapper.updateNotifications(notifications);
 	}
-
+	
 	@Transactional
 	public void updateNotifications1(NotificationsInfo notifications) {
 		notificationsInfoMapper.updateNotifications1(notifications);
 	}
-
+	
 	@Transactional
 	public void deleteNotifications(String id) {
 		notificationsInfoMapper.deleteById(id);
