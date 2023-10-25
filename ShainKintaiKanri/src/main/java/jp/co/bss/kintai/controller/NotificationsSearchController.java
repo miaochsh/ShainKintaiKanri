@@ -1,6 +1,5 @@
 package jp.co.bss.kintai.controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -19,23 +18,10 @@ public class NotificationsSearchController {
 	@Autowired
 	private NotificationsService notificationsService;
 
-	// お知らせ一覧を表示
-    @GetMapping("/notifications_search")
-    public String notificationsList(HttpSession session, Model model) {
-        List<NotificationsInfo> notificationsData = notificationsService.getNotificationsInfoList();
-        
-        //降順にソート 
-		Collections.reverse(notificationsData);
-        model.addAttribute("notificationsInfoData", notificationsData);
-        return "notificationsSearch";
-    }
-    
-    // 重要と通常のお知らせ出し分け
-    @GetMapping("/important_notifications")
-    public String importantNotificationsList(HttpSession session, Model model) {
-        List<NotificationsInfo> importantNotificationsData = notificationsService.getImportantNotifications();
-        model.addAttribute("notificationsInfoData", importantNotificationsData);
-        return "notificationsSearch";
-    }
+	@GetMapping("/notifications_search")
+	public String showNotifications(HttpSession session, Model model) {
+		List<NotificationsInfo> data = notificationsService.getNotificationsInfoList();
+		model.addAttribute("notificationsInfoData", data);
+		return "notificationsSearch";
+	}
 }
-

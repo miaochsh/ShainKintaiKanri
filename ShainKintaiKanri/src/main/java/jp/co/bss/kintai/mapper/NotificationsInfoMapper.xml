@@ -2,14 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.bss.kintai.mapper.NotificationsInfoMapper">
 
-	<select id="getNotificationsListInfoByUserName"
-		resultType="jp.co.bss.kintai.model.NotificationsInfo">
-		SELECT * FROM notifications ;
-	</select>
-
-	<select id="getImportantNotifications"
-		resultType="jp.co.bss.kintai.model.NotificationsInfo">
-		SELECT * FROM notifications WHERE status = '0';
-	</select>
+    <select id="getNotificationsListInfoByUserName" resultType="jp.co.bss.kintai.model.NotificationsInfo">
+        SELECT * FROM notifications ;
+    </select>
 
 </mapper>
