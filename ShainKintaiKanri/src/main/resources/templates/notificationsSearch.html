@@ -138,37 +138,47 @@ a {
 </style>
 </head>
 <body>
-<div class="container">
-    <div class="box">
-        <div class="logo">
-            <img src="./images/bss.png" alt="公司图标">
-        </div>
-        <table>
-            <div class="toggle_button">
-                <input id="toggle" class="toggle_input" type='checkbox'>
-                <label class="toggle_label"></label>
-                <span class="content_pos">重要</span>
-                
+    <div class="container">
+        <div class="box">
+            <div class="logo">
+                <img src="./images/bss.png" alt="公司图标">
             </div>
-            <button>
-            検索
-            </button>
-            
-            <tr>
-                <th>お知らせ一覧</th>
-            </tr>
-            <tbody id="noticeTableBody">
-                <tr th:each="notifications : ${normalNotifications}">
-                    <td><a class="input-width tall-row" id="title"
-                           th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title + '　　　'  + notifications.status}"></a>
-                        <span
-                                th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}"
-                                class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+            <table>
+                <div class="toggle_button">
+                    <input id="toggle" class="toggle_input" type='checkbox'>
+                    <label class="toggle_label"></label>
+                    <span class="content_pos">重要</span>
+                </div>
+                <button onclick="searchNotifications()">検索</button>
 
+                <tr>
+                    <th>お知らせ一覧</th>
+                </tr>
+                <tbody id="noticeTableBody">
+                    <tr th:each="notifications : ${notificationsInfoData}">
+                        <td>
+                            <a class="input-width tall-row" id="title"
+                                th:text="${#dates.format(notifications.creation_date, 'yyyy/MM/dd') + '　　　' + notifications.title + '　　　'  + notifications.status}"></a>
+                            <span
+                                th:if="${T(java.time.LocalDate).now().minusMonths(1).isBefore(notifications.creation_date.toLocalDate())}"
+                                class="new-badge">&nbsp;&nbsp; NEW &nbsp;&nbsp;</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function searchNotifications() {
+            const checkBox = document.getElementById('toggle');
+            let url;
+            if (checkBox.checked) {
+                url = '/notifications_search?status=all';
+            } else {
+                url = '/notifications_search?status=1';
+            }
+            window.location.href = url;
+		}
+    </script>
 </body>
 </html>

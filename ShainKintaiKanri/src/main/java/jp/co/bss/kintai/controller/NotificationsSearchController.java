@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.bss.kintai.model.NotificationsInfo;
 import jp.co.bss.kintai.service.NotificationsService;
@@ -32,12 +33,15 @@ public class NotificationsSearchController {
     
     // 通常のお知らせを表示
     @GetMapping("/notifications_search")
-    public String normalNotificationsList(HttpSession session, Model model) {
-        List<NotificationsInfo> normalNotificationsData = notificationsService.getNormalNotifications();
-        
-        //降順にソート
-        Collections.reverse(normalNotificationsData);
-        model.addAttribute("normalNotifications", normalNotificationsData);
+    public String notificationsList(@RequestParam(value = "status", required = false) String status, HttpSession session, Model model) {
+        List<NotificationsInfo> notificationsData;
+        if (status != null && status.equals("1")) {
+            notificationsData = notificationsService.getNormalNotifications();
+        } else {
+            notificationsData = notificationsService.getNotificationsInfoList();
+        }
+        Collections.reverse(notificationsData); // 降順にソート
+        model.addAttribute("notificationsInfoData", notificationsData);
         return "notificationsSearch";
     }
 }
