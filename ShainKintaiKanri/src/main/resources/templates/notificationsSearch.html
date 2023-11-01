@@ -149,6 +149,7 @@ a {
                     <label class="toggle_label"></label>
                     <span class="content_pos">重要</span>
                 </div>
+                <input id="searchDate" class="date-input" type='date'>
                 <button onclick="searchNotifications()">検索</button>
 
                 <tr>
@@ -168,17 +169,23 @@ a {
             </table>
         </div>
     </div>
-    <script>
-        function searchNotifications() {
-            const checkBox = document.getElementById('toggle');
-            let url;
-            if (checkBox.checked) {
-                url = '/notifications_search?status=all';
-            } else {
-                url = '/notifications_search?status=1';
-            }
-            window.location.href = url;
-		}
-    </script>
+	 <script>
+   		function searchNotifications() {
+        	const checkBox = document.getElementById('toggle');
+        	const date = document.getElementById('searchDate').value;
+        	let url = '/notifications_search?';
+        
+        	if (checkBox.checked) {
+            	url += 'status=all';
+        	} else {
+            	url += 'status=1';
+        	}
+        
+        	if (date) {
+            	url += '&creation_date=' + date;
+        	}
+       		 window.location.href = url;
+    	}
+	</script>
 </body>
 </html>

@@ -1,8 +1,10 @@
 package jp.co.bss.kintai.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import jp.co.bss.kintai.model.NotificationsInfo;
 
@@ -16,6 +18,8 @@ public interface NotificationsInfoMapper {
 	List<NotificationsInfo> getNotificationsListInfoByUserName();
 	
 	List<NotificationsInfo> getNormalNotifications();
+	
+	List<NotificationsInfo> getNotificationsDate(@Param("selectDate") Date selectDate);
 	
 	void insertNotifications1(NotificationsInfo notifications);
 

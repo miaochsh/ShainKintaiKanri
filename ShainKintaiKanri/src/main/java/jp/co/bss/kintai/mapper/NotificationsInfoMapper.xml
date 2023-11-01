@@ -9,4 +9,9 @@
 	<select id="getNormalNotifications" resultType="jp.co.bss.kintai.model.NotificationsInfo">
 		SELECT * FROM notifications WHERE status = '1';
 	</select>
+	
+	<select id="getNotificationsDate" resultType="jp.co.bss.kintai.model.NotificationsInfo">
+		SELECT * FROM notifications WHERE DATE(creation_date) = DATE(#{selectDate}); 
+	</select>
+	
 </mapper>

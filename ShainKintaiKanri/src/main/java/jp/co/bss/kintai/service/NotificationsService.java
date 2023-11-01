@@ -1,5 +1,6 @@
 package jp.co.bss.kintai.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class NotificationsService {
 	public List<NotificationsInfo> getNormalNotifications() {
 		List<NotificationsInfo> normalNotificationsData = notificationsInfoMapper.getNormalNotifications();    
 		return normalNotificationsData;
+	}
+	
+	public List<NotificationsInfo> getNotificationsDate(Date selectDate) {
+		List<NotificationsInfo> notificationsDate = notificationsInfoMapper.getNotificationsDate(selectDate);
+		return notificationsDate;
 	}
 	
 	@Transactional
