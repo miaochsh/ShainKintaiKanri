@@ -149,7 +149,7 @@ a {
                     <label class="toggle_label"></label>
                     <span class="content_pos">重要</span>
                 </div>
-                <input id="searchDate" class="date-input" type='date'>
+                <input id="searchDate" class="date-input" type='text' placeholder="yyyy / MM" name="yearMonth">
                 <button onclick="searchNotifications()">検索</button>
 
                 <tr>
@@ -182,7 +182,11 @@ a {
         	}
         
         	if (date) {
-            	url += '&creation_date=' + date;
+        		if (checkBox.checked){
+        			url += '&creation_date=' + date;
+        		} else {
+        			url += '&creation_date=' + date;
+        		}
         	}
        		 window.location.href = url;
     	}

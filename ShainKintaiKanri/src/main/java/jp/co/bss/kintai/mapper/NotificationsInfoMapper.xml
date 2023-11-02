@@ -5,13 +5,22 @@
     <select id="getNotificationsListInfoByUserName" resultType="jp.co.bss.kintai.model.NotificationsInfo">
         SELECT * FROM notifications ;
     </select>
+    
+    <select id="getAllNotifications" resultType="jp.co.bss.kintai.model.NotificationsInfo">
+        SELECT * FROM notifications ;
+    </select>
 
 	<select id="getNormalNotifications" resultType="jp.co.bss.kintai.model.NotificationsInfo">
 		SELECT * FROM notifications WHERE status = '1';
 	</select>
 	
 	<select id="getNotificationsDate" resultType="jp.co.bss.kintai.model.NotificationsInfo">
-		SELECT * FROM notifications WHERE DATE(creation_date) = DATE(#{selectDate}); 
+		SELECT * FROM notifications WHERE TO_CHAR(creation_date, 'YYYY/MM') = TO_CHAR(TO_DATE(#{yearMonth}, 'YYYY/MM'), 'YYYY/MM'); 
+	</select>
+	
+	<select id="getNormalNotificationsDate" resultType="jp.co.bss.kintai.model.NotificationsInfo">
+		SELECT * FROM notifications WHERE TO_CHAR(creation_date, 'YYYY/MM') = TO_CHAR(TO_DATE(#{yearMonth}, 'YYYY/MM'), 'YYYY/MM')
+		AND status = '1'; 
 	</select>
 	
 </mapper>
