@@ -15,12 +15,16 @@
 	</select>
 	
 	<select id="getNotificationsDate" resultType="jp.co.bss.kintai.model.NotificationsInfo">
-		SELECT * FROM notifications WHERE TO_CHAR(creation_date, 'YYYY/MM') = TO_CHAR(TO_DATE(#{yearMonth}, 'YYYY/MM'), 'YYYY/MM'); 
+		SELECT * FROM notifications WHERE TO_CHAR(creation_date, 'YYYYMM') = TO_CHAR(TO_DATE(#{yearMonth}, 'YYYYMM'), 'YYYYMM');
 	</select>
 	
 	<select id="getNormalNotificationsDate" resultType="jp.co.bss.kintai.model.NotificationsInfo">
-		SELECT * FROM notifications WHERE TO_CHAR(creation_date, 'YYYY/MM') = TO_CHAR(TO_DATE(#{yearMonth}, 'YYYY/MM'), 'YYYY/MM')
+		SELECT * FROM notifications WHERE TO_CHAR(creation_date, 'YYYYMM') = TO_CHAR(TO_DATE(#{yearMonth}, 'YYYYMM'), 'YYYYMM')
 		AND status = '1'; 
+	</select>
+	
+	<select id="getNotificationsDateList" resultType="jp.co.bss.kintai.model.NotificationsInfo">
+		SELECT DISTINCT creation_date FROM notifications ORDER BY creation_date DESC;
 	</select>
 	
 </mapper>

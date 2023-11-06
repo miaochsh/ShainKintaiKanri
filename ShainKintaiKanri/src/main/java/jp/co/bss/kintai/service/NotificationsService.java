@@ -34,6 +34,11 @@ public class NotificationsService {
 		return notificationsDate;
 	}
 	
+	public List<NotificationsInfo> getNotificationsDateList() {
+		List<NotificationsInfo> dateList = notificationsInfoMapper.getNotificationsDateList();
+		return dateList;
+	}
+	
 	@Transactional
 	public void insertNotifications1(NotificationsInfo notifications) {
 		notificationsInfoMapper.insertNotifications1(notifications);

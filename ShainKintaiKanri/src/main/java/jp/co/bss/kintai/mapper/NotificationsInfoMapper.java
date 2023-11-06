@@ -22,6 +22,8 @@ public interface NotificationsInfoMapper {
 	
 	List<NotificationsInfo> getNormalNotificationsDate(@Param("yearMonth") String yearMonth);
 	
+	List<NotificationsInfo> getNotificationsDateList();
+	
 	void insertNotifications1(NotificationsInfo notifications);
 
 	void updateNotifications(NotificationsInfo notifications);
