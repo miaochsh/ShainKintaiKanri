@@ -14,14 +14,29 @@ public class NotificationsService {
 	@Autowired
 	private NotificationsInfoMapper notificationsInfoMapper;
 	
-	public List<NotificationsInfo> getNotificationsInfoList() {
-		List<NotificationsInfo> data = notificationsInfoMapper.getNotificationsListInfoByUserName();
+	public List<NotificationsInfo> getAllNotifications() {
+		List<NotificationsInfo> data = notificationsInfoMapper.getAllNotifications();
 		return data;
 	}
 	
 	public List<NotificationsInfo> getNormalNotifications() {
 		List<NotificationsInfo> normalNotificationsData = notificationsInfoMapper.getNormalNotifications();    
 		return normalNotificationsData;
+	}
+	
+	public List<NotificationsInfo> getNotificationsDate(String yearMonth) {
+		List<NotificationsInfo> notificationsDate = notificationsInfoMapper.getNotificationsDate(yearMonth);
+		return notificationsDate;
+	}
+	
+	public List<NotificationsInfo> getNormalNotificationsDate(String yearMonth) {
+		List<NotificationsInfo> notificationsDate = notificationsInfoMapper.getNormalNotificationsDate(yearMonth);
+		return notificationsDate;
+	}
+	
+	public List<NotificationsInfo> getNotificationsDateList() {
+		List<NotificationsInfo> dateList = notificationsInfoMapper.getNotificationsDateList();
+		return dateList;
 	}
 	
 	@Transactional

@@ -80,6 +80,22 @@ a {
 	font-size: 13px;
 }
 
+.horizontal-container {
+    display: flex;
+    align-items: center;
+}
+
+.yearmonth-select-container {
+    margin-right: 15px;
+    position: relative;
+	top: -7px;
+}
+
+.search-button-container {
+    position: relative;
+	top: -7px;
+}
+
 .toggle_input {
   position: absolute;
   left: 0;
@@ -143,14 +159,29 @@ a {
             <div class="logo">
                 <img src="./images/bss.png" alt="公司图标">
             </div>
-            <table>
+            
+            <div class="horizontal-container">
                 <div class="toggle_button">
                     <input id="toggle" class="toggle_input" type='checkbox'>
                     <label class="toggle_label"></label>
                     <span class="content_pos">重要</span>
                 </div>
-                <button onclick="searchNotifications()">検索</button>
-
+                
+                <div class="yearmonth-select-container">
+					<select id="yearMonthSelect">
+						<option value="">YYYY / MM</option>
+						<th:block th:each="date : ${pullDownMenu}">
+							<option th:value="${date}" th:text="${date}"></option>
+						</th:block>
+					</select>
+				</div>
+                
+                <div class="search-button-container">
+                	<button onclick="searchNotifications()">検索</button>
+                </div>
+            </div>
+                
+			<table>
                 <tr>
                     <th>お知らせ一覧</th>
                 </tr>
@@ -171,12 +202,18 @@ a {
     <script>
         function searchNotifications() {
             const checkBox = document.getElementById('toggle');
-            let url;
+            const date = document.getElementById('yearMonthSelect').value;
+            let url = '/notifications_search?';
+            
             if (checkBox.checked) {
-                url = '/notifications_search?status=all';
+                url += 'status=all';
             } else {
-                url = '/notifications_search?status=1';
+                url += 'status=1';
             }
+            
+            if (date) {
+				url += '&creation_date=' + date.replace('/', '');
+			}
             window.location.href = url;
 		}
     </script>
