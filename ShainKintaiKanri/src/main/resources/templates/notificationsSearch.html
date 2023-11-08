@@ -169,10 +169,8 @@ a {
                 
                 <div class="yearmonth-select-container">
 					<select id="yearMonthSelect">
-						<option value="">YYYY / MM</option>
-						<th:block th:each="date : ${pullDownMenu}">
-							<option th:value="${date}" th:text="${date}"></option>
-						</th:block>
+						<option value="" >YYYY / MM</option>
+						<option th:each="date : ${pullDownMenu}" th:value="${date}" th:text="${date}" th:selected="${date == pullDownMenu}"></option>
 					</select>
 				</div>
                 
